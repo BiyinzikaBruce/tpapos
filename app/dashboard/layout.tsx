@@ -1,36 +1,35 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/dashboard/app-sidebar";
+import { db } from "@/lib/db";
+import { Sidebar } from "@/components/layout/sidebar";
+import { adminNav } from "@/components/layout/nav-config";
 
 export const dynamic = "force-dynamic";
 
-export default async function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const session = await auth.api.getSession({ headers: await headers() });
+  if (!session) redirect("/login");
 
-  if (!session) {
-    redirect("/auth/sign-in");
-  }
+  const org = session.user.organisationId
+    ? await db.organisation.findUnique({
+        where: { id: session.user.organisationId },
+        select: { name: true, logoUrl: true },
+      })
+    : null;
 
   return (
-    <SidebarProvider>
-      <AppSidebar
-        user={{
-          name: session.user.name,
-          email: session.user.email,
-          image: session.user.image,
-        }}
+    <div className="flex min-h-screen bg-[#0B0B18]">
+      <Sidebar
+        navItems={adminNav}
+        orgName={org?.name ?? "TPAPOS"}
+        orgLogoUrl={org?.logoUrl ?? undefined}
+        userName={session.user.name}
+        userRole={(session.user as { role?: string }).role ?? "ADMIN"}
       />
-      <SidebarInset className="bg-muted/30">
-        {children}
-      </SidebarInset>
-    </SidebarProvider>
+      <div className="flex-1 flex flex-col" style={{ marginLeft: "var(--sidebar-width)" }}>
+        <main className="flex-1 p-6">{children}</main>
+      </div>
+    </div>
   );
 }
