@@ -1,6 +1,9 @@
 import { Resend } from "resend";
 import { OTPTemplate } from "@/components/emails/otp-template";
 import { ResetPasswordTemplate } from "@/components/emails/reset-password-template";
+import { WelcomeTemplate } from "@/components/emails/welcome-template";
+import { LowStockTemplate } from "@/components/emails/low-stock-template";
+import { TransferRequestTemplate } from "@/components/emails/transfer-request-template";
 import { formatUGX } from "@/lib/format";
 
 function getResend() {
@@ -105,4 +108,98 @@ export async function sendDailyReportEmail(opts: {
     subject: `Daily Report: ${opts.branchName} — ${opts.date}`,
     html,
   });
+}
+
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://tpapos.vercel.app";
+
+export async function sendWelcomeEmail(opts: {
+  to: string;
+  name: string;
+  tempPassword: string;
+  role: string;
+  orgName: string;
+}) {
+  try {
+    await getResend().emails.send({
+      from: process.env.RESEND_FROM_EMAIL ?? "noreply@tpapos.co.ug",
+      to: opts.to,
+      subject: `Welcome to ${opts.orgName} — Your TPAPOS account`,
+      react: (
+        <WelcomeTemplate
+          name={opts.name}
+          email={opts.to}
+          tempPassword={opts.tempPassword}
+          role={opts.role}
+          orgName={opts.orgName}
+          loginUrl={`${APP_URL}/login`}
+        />
+      ),
+    });
+  } catch (err) {
+    console.error("sendWelcomeEmail failed:", err);
+  }
+}
+
+export async function sendLowStockEmail(opts: {
+  to: string[];
+  productName: string;
+  sku: string;
+  branchName: string;
+  currentQty: number;
+  threshold: number;
+}) {
+  if (!opts.to.length) return;
+  try {
+    await getResend().emails.send({
+      from: process.env.RESEND_FROM_EMAIL ?? "noreply@tpapos.co.ug",
+      to: opts.to,
+      subject: `Low Stock Alert: ${opts.productName} at ${opts.branchName}`,
+      react: (
+        <LowStockTemplate
+          productName={opts.productName}
+          sku={opts.sku}
+          branchName={opts.branchName}
+          currentQty={opts.currentQty}
+          threshold={opts.threshold}
+          loginUrl={`${APP_URL}/store/inventory`}
+        />
+      ),
+    });
+  } catch (err) {
+    console.error("sendLowStockEmail failed:", err);
+  }
+}
+
+export async function sendTransferRequestEmail(opts: {
+  to: string[];
+  requesterName: string;
+  productName: string;
+  sku: string;
+  quantity: number;
+  fromBranch: string;
+  toBranch: string;
+  notes?: string;
+}) {
+  if (!opts.to.length) return;
+  try {
+    await getResend().emails.send({
+      from: process.env.RESEND_FROM_EMAIL ?? "noreply@tpapos.co.ug",
+      to: opts.to,
+      subject: `Transfer Request: ${opts.quantity}x ${opts.productName} → ${opts.toBranch}`,
+      react: (
+        <TransferRequestTemplate
+          requesterName={opts.requesterName}
+          productName={opts.productName}
+          sku={opts.sku}
+          quantity={opts.quantity}
+          fromBranch={opts.fromBranch}
+          toBranch={opts.toBranch}
+          notes={opts.notes}
+          loginUrl={`${APP_URL}/store/inventory/transfers`}
+        />
+      ),
+    });
+  } catch (err) {
+    console.error("sendTransferRequestEmail failed:", err);
+  }
 }

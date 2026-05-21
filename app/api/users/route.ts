@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { sendWelcomeEmail } from "@/lib/email";
 
 export async function GET(req: NextRequest) {
   const session = await auth.api.getSession({ headers: req.headers });
@@ -37,10 +38,16 @@ export async function POST(req: NextRequest) {
   }
 
   // Update org/branch/role on the created user
-  const user = await db.user.update({
-    where: { email },
-    data: { role, organisationId: orgId, branchId: branchId || null },
-    select: { id: true, name: true, email: true, role: true, branchId: true, createdAt: true },
-  });
+  const [user, org] = await Promise.all([
+    db.user.update({
+      where: { email },
+      data: { role, organisationId: orgId, branchId: branchId || null },
+      select: { id: true, name: true, email: true, role: true, branchId: true, createdAt: true },
+    }),
+    db.organisation.findUnique({ where: { id: orgId }, select: { name: true } }),
+  ]);
+
+  sendWelcomeEmail({ to: email, name, tempPassword: password, role, orgName: org?.name ?? "Your Organisation" }).catch(() => {});
+
   return NextResponse.json(user, { status: 201 });
 }
