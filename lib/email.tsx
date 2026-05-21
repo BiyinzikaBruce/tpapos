@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import { OTPTemplate } from "@/components/emails/otp-template";
 import { ResetPasswordTemplate } from "@/components/emails/reset-password-template";
+import { formatUGX } from "@/lib/format";
 
 function getResend() {
   return new Resend(process.env.RESEND_API_KEY ?? "placeholder");
@@ -68,4 +69,40 @@ export async function sendResetPasswordEmail(email: string, url: string) {
     }
     throw error;
   }
+}
+
+export async function sendDailyReportEmail(opts: {
+  to: string;
+  adminName: string;
+  cashierName: string;
+  branchName: string;
+  date: string;
+  totalSales: number;
+  cashAmount: number;
+  momoAmount: number;
+  salesCount: number;
+  notes?: string;
+}) {
+  const html = `
+    <div style="font-family:sans-serif;max-width:480px;margin:0 auto;background:#0D0D1A;color:#F1F0FF;padding:32px;border-radius:12px">
+      <h2 style="color:#7C3AED;margin-top:0">Daily Sales Report</h2>
+      <p>Hi ${opts.adminName},</p>
+      <p><strong>${opts.cashierName}</strong> submitted the daily report for <strong>${opts.branchName}</strong> on ${opts.date}.</p>
+      <table style="width:100%;border-collapse:collapse;margin:24px 0">
+        <tr><td style="padding:8px 0;color:#A09EC0">Total Sales</td><td style="text-align:right;font-weight:bold">${formatUGX(opts.totalSales)}</td></tr>
+        <tr><td style="padding:8px 0;color:#A09EC0">Cash</td><td style="text-align:right">${formatUGX(opts.cashAmount)}</td></tr>
+        <tr><td style="padding:8px 0;color:#A09EC0">Mobile Money</td><td style="text-align:right">${formatUGX(opts.momoAmount)}</td></tr>
+        <tr><td style="padding:8px 0;color:#A09EC0">No. of Sales</td><td style="text-align:right">${opts.salesCount}</td></tr>
+        ${opts.notes ? `<tr><td style="padding:8px 0;color:#A09EC0">Notes</td><td style="text-align:right">${opts.notes}</td></tr>` : ""}
+      </table>
+      <p style="color:#5C5A7A;font-size:12px">TPAPOS — Run Every Branch. Own Every Sale.</p>
+    </div>
+  `;
+
+  await getResend().emails.send({
+    from: process.env.RESEND_FROM_EMAIL ?? "noreply@tpapos.co.ug",
+    to: opts.to,
+    subject: `Daily Report: ${opts.branchName} — ${opts.date}`,
+    html,
+  });
 }
