@@ -33,18 +33,27 @@ export function Sidebar({
       }}
     >
       {/* Org logo + name */}
-      <div className="flex items-center gap-3 px-4 py-5 border-b" style={{ borderColor: "var(--color-border-subtle)" }}>
-        <div
-          className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
-          style={{ backgroundColor: "var(--color-primary)" }}
-        >
-          {orgLogoUrl ? (
-            <img src={orgLogoUrl} alt={orgName} className="w-full h-full object-cover rounded-lg" />
-          ) : (
-            orgName.charAt(0).toUpperCase()
-          )}
-        </div>
-        <span className="text-[0.9rem] font-semibold text-[#F1F0FF] truncate">{orgName}</span>
+      <div className="flex flex-col items-center gap-2 px-4 py-5 border-b" style={{ borderColor: "var(--color-border-subtle)" }}>
+        {orgLogoUrl ? (
+          <>
+            <img
+              src={orgLogoUrl}
+              alt={orgName}
+              className="w-full max-h-20 object-contain rounded-xl"
+            />
+            <span className="text-[0.75rem] font-medium text-[#5C5A7A] truncate text-center">{orgName}</span>
+          </>
+        ) : (
+          <>
+            <div
+              className="w-12 h-12 rounded-xl flex items-center justify-center text-white text-lg font-bold flex-shrink-0"
+              style={{ backgroundColor: "var(--color-primary)" }}
+            >
+              {orgName.charAt(0).toUpperCase()}
+            </div>
+            <span className="text-[0.85rem] font-semibold text-[#F1F0FF] truncate text-center">{orgName}</span>
+          </>
+        )}
       </div>
 
       {/* Nav items */}

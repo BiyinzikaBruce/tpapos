@@ -55,9 +55,7 @@ export function SignIn() {
       <div className="relative w-full max-w-sm mx-auto">
         {/* Logo */}
         <div className="mb-8 text-center">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#7C3AED] mb-4">
-            <span className="text-white text-xl font-bold">T</span>
-          </div>
+          <img src="/logo.png" alt="TPAPOS" className="w-32 h-32 object-contain mx-auto mb-3 rounded-2xl" />
           <h1 className="text-2xl font-bold text-[#F1F0FF]">Welcome back</h1>
           <p className="text-sm text-[#5C5A7A] mt-1">Sign in to your TPAPOS account</p>
         </div>
