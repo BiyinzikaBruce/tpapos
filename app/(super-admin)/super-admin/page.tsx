@@ -2,26 +2,18 @@ import { db } from "@/lib/db";
 import { Shield, Building2, Users, Package, ShoppingCart } from "lucide-react";
 
 export default async function SuperAdminPlatformPage() {
-  let orgCount = 0, userCount = 0, productCount = 0, saleCount = 0;
-  let recentOrgs: { id: string; name: string; plan: string; _count: { branches: number; users: number } }[] = [];
+  const [orgCount, userCount, productCount, saleCount] = await Promise.all([
+    db.organisation.count(),
+    db.user.count(),
+    db.product.count(),
+    db.sale.count(),
+  ]);
 
-  try {
-    [orgCount, userCount, productCount, saleCount] = await Promise.all([
-      db.organisation.count(),
-      db.user.count({ where: { role: { not: "SUPER_ADMIN" as never } } }),
-      db.product.count(),
-      db.sale.count(),
-    ]);
-
-    recentOrgs = await db.organisation.findMany({
-      orderBy: { createdAt: "desc" },
-      take: 5,
-      include: { _count: { select: { branches: true, users: true } } },
-    });
-  } catch (err) {
-    console.error("[super-admin page] DB error:", err);
-    throw err;
-  }
+  const recentOrgs = await db.organisation.findMany({
+    orderBy: { createdAt: "desc" },
+    take: 5,
+    select: { id: true, name: true, plan: true, _count: { select: { branches: true, users: true } } },
+  });
 
   const stats = [
     { icon: Building2, label: "Organisations", value: orgCount, color: "#7C3AED" },
