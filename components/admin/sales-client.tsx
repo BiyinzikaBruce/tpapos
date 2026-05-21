@@ -22,8 +22,8 @@ type Sale = {
 
 const PM_LABELS: Record<string, string> = { CASH: "Cash", MTN_MOMO: "MTN MoMo", AIRTEL_MONEY: "Airtel" };
 
-export function SalesClient({ branches }: { branches: Branch[] }) {
-  const [branchId, setBranchId] = useState("");
+export function SalesClient({ branches, defaultBranchId = "" }: { branches: Branch[]; defaultBranchId?: string }) {
+  const [branchId, setBranchId] = useState(defaultBranchId);
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [page, setPage] = useState(1);
