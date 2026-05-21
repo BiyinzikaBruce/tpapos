@@ -234,6 +234,14 @@ export type OrganisationWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Organisation"> | Date | string
   branches?: Prisma.BranchListRelationFilter
   users?: Prisma.UserListRelationFilter
+  categories?: Prisma.CategoryListRelationFilter
+  products?: Prisma.ProductListRelationFilter
+  suppliers?: Prisma.SupplierListRelationFilter
+  stockEntries?: Prisma.StockEntryListRelationFilter
+  sales?: Prisma.SaleListRelationFilter
+  dailyReports?: Prisma.DailyReportListRelationFilter
+  notifications?: Prisma.NotificationListRelationFilter
+  auditLogs?: Prisma.AuditLogListRelationFilter
 }
 
 export type OrganisationOrderByWithRelationInput = {
@@ -246,6 +254,14 @@ export type OrganisationOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   branches?: Prisma.BranchOrderByRelationAggregateInput
   users?: Prisma.UserOrderByRelationAggregateInput
+  categories?: Prisma.CategoryOrderByRelationAggregateInput
+  products?: Prisma.ProductOrderByRelationAggregateInput
+  suppliers?: Prisma.SupplierOrderByRelationAggregateInput
+  stockEntries?: Prisma.StockEntryOrderByRelationAggregateInput
+  sales?: Prisma.SaleOrderByRelationAggregateInput
+  dailyReports?: Prisma.DailyReportOrderByRelationAggregateInput
+  notifications?: Prisma.NotificationOrderByRelationAggregateInput
+  auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
 }
 
 export type OrganisationWhereUniqueInput = Prisma.AtLeast<{
@@ -261,6 +277,14 @@ export type OrganisationWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Organisation"> | Date | string
   branches?: Prisma.BranchListRelationFilter
   users?: Prisma.UserListRelationFilter
+  categories?: Prisma.CategoryListRelationFilter
+  products?: Prisma.ProductListRelationFilter
+  suppliers?: Prisma.SupplierListRelationFilter
+  stockEntries?: Prisma.StockEntryListRelationFilter
+  sales?: Prisma.SaleListRelationFilter
+  dailyReports?: Prisma.DailyReportListRelationFilter
+  notifications?: Prisma.NotificationListRelationFilter
+  auditLogs?: Prisma.AuditLogListRelationFilter
 }, "id">
 
 export type OrganisationOrderByWithAggregationInput = {
@@ -301,6 +325,14 @@ export type OrganisationCreateInput = {
   updatedAt?: Date | string
   branches?: Prisma.BranchCreateNestedManyWithoutOrganisationInput
   users?: Prisma.UserCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationUncheckedCreateInput = {
@@ -313,6 +345,14 @@ export type OrganisationUncheckedCreateInput = {
   updatedAt?: Date | string
   branches?: Prisma.BranchUncheckedCreateNestedManyWithoutOrganisationInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryUncheckedCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationUpdateInput = {
@@ -325,6 +365,14 @@ export type OrganisationUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.BranchUpdateManyWithoutOrganisationNestedInput
   users?: Prisma.UserUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationUncheckedUpdateInput = {
@@ -337,6 +385,14 @@ export type OrganisationUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.BranchUncheckedUpdateManyWithoutOrganisationNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUncheckedUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationCreateManyInput = {
@@ -459,6 +515,118 @@ export type OrganisationUpdateOneRequiredWithoutBranchesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.OrganisationUpdateToOneWithWhereWithoutBranchesInput, Prisma.OrganisationUpdateWithoutBranchesInput>, Prisma.OrganisationUncheckedUpdateWithoutBranchesInput>
 }
 
+export type OrganisationCreateNestedOneWithoutCategoriesInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutCategoriesInput, Prisma.OrganisationUncheckedCreateWithoutCategoriesInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutCategoriesInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+}
+
+export type OrganisationUpdateOneRequiredWithoutCategoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutCategoriesInput, Prisma.OrganisationUncheckedCreateWithoutCategoriesInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutCategoriesInput
+  upsert?: Prisma.OrganisationUpsertWithoutCategoriesInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganisationUpdateToOneWithWhereWithoutCategoriesInput, Prisma.OrganisationUpdateWithoutCategoriesInput>, Prisma.OrganisationUncheckedUpdateWithoutCategoriesInput>
+}
+
+export type OrganisationCreateNestedOneWithoutProductsInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutProductsInput, Prisma.OrganisationUncheckedCreateWithoutProductsInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutProductsInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+}
+
+export type OrganisationUpdateOneRequiredWithoutProductsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutProductsInput, Prisma.OrganisationUncheckedCreateWithoutProductsInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutProductsInput
+  upsert?: Prisma.OrganisationUpsertWithoutProductsInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganisationUpdateToOneWithWhereWithoutProductsInput, Prisma.OrganisationUpdateWithoutProductsInput>, Prisma.OrganisationUncheckedUpdateWithoutProductsInput>
+}
+
+export type OrganisationCreateNestedOneWithoutSuppliersInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutSuppliersInput, Prisma.OrganisationUncheckedCreateWithoutSuppliersInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutSuppliersInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+}
+
+export type OrganisationUpdateOneRequiredWithoutSuppliersNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutSuppliersInput, Prisma.OrganisationUncheckedCreateWithoutSuppliersInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutSuppliersInput
+  upsert?: Prisma.OrganisationUpsertWithoutSuppliersInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganisationUpdateToOneWithWhereWithoutSuppliersInput, Prisma.OrganisationUpdateWithoutSuppliersInput>, Prisma.OrganisationUncheckedUpdateWithoutSuppliersInput>
+}
+
+export type OrganisationCreateNestedOneWithoutStockEntriesInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutStockEntriesInput, Prisma.OrganisationUncheckedCreateWithoutStockEntriesInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutStockEntriesInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+}
+
+export type OrganisationUpdateOneRequiredWithoutStockEntriesNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutStockEntriesInput, Prisma.OrganisationUncheckedCreateWithoutStockEntriesInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutStockEntriesInput
+  upsert?: Prisma.OrganisationUpsertWithoutStockEntriesInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganisationUpdateToOneWithWhereWithoutStockEntriesInput, Prisma.OrganisationUpdateWithoutStockEntriesInput>, Prisma.OrganisationUncheckedUpdateWithoutStockEntriesInput>
+}
+
+export type OrganisationCreateNestedOneWithoutSalesInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutSalesInput, Prisma.OrganisationUncheckedCreateWithoutSalesInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutSalesInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+}
+
+export type OrganisationUpdateOneRequiredWithoutSalesNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutSalesInput, Prisma.OrganisationUncheckedCreateWithoutSalesInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutSalesInput
+  upsert?: Prisma.OrganisationUpsertWithoutSalesInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganisationUpdateToOneWithWhereWithoutSalesInput, Prisma.OrganisationUpdateWithoutSalesInput>, Prisma.OrganisationUncheckedUpdateWithoutSalesInput>
+}
+
+export type OrganisationCreateNestedOneWithoutDailyReportsInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutDailyReportsInput, Prisma.OrganisationUncheckedCreateWithoutDailyReportsInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutDailyReportsInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+}
+
+export type OrganisationUpdateOneRequiredWithoutDailyReportsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutDailyReportsInput, Prisma.OrganisationUncheckedCreateWithoutDailyReportsInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutDailyReportsInput
+  upsert?: Prisma.OrganisationUpsertWithoutDailyReportsInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganisationUpdateToOneWithWhereWithoutDailyReportsInput, Prisma.OrganisationUpdateWithoutDailyReportsInput>, Prisma.OrganisationUncheckedUpdateWithoutDailyReportsInput>
+}
+
+export type OrganisationCreateNestedOneWithoutNotificationsInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutNotificationsInput, Prisma.OrganisationUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutNotificationsInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+}
+
+export type OrganisationUpdateOneRequiredWithoutNotificationsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutNotificationsInput, Prisma.OrganisationUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutNotificationsInput
+  upsert?: Prisma.OrganisationUpsertWithoutNotificationsInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganisationUpdateToOneWithWhereWithoutNotificationsInput, Prisma.OrganisationUpdateWithoutNotificationsInput>, Prisma.OrganisationUncheckedUpdateWithoutNotificationsInput>
+}
+
+export type OrganisationCreateNestedOneWithoutAuditLogsInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutAuditLogsInput, Prisma.OrganisationUncheckedCreateWithoutAuditLogsInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutAuditLogsInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+}
+
+export type OrganisationUpdateOneRequiredWithoutAuditLogsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutAuditLogsInput, Prisma.OrganisationUncheckedCreateWithoutAuditLogsInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutAuditLogsInput
+  upsert?: Prisma.OrganisationUpsertWithoutAuditLogsInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganisationUpdateToOneWithWhereWithoutAuditLogsInput, Prisma.OrganisationUpdateWithoutAuditLogsInput>, Prisma.OrganisationUncheckedUpdateWithoutAuditLogsInput>
+}
+
 export type OrganisationCreateWithoutUsersInput = {
   id?: string
   name: string
@@ -468,6 +636,14 @@ export type OrganisationCreateWithoutUsersInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   branches?: Prisma.BranchCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationUncheckedCreateWithoutUsersInput = {
@@ -479,6 +655,14 @@ export type OrganisationUncheckedCreateWithoutUsersInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   branches?: Prisma.BranchUncheckedCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryUncheckedCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationCreateOrConnectWithoutUsersInput = {
@@ -506,6 +690,14 @@ export type OrganisationUpdateWithoutUsersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.BranchUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationUncheckedUpdateWithoutUsersInput = {
@@ -517,6 +709,14 @@ export type OrganisationUncheckedUpdateWithoutUsersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.BranchUncheckedUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUncheckedUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationCreateWithoutBranchesInput = {
@@ -528,6 +728,14 @@ export type OrganisationCreateWithoutBranchesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   users?: Prisma.UserCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationUncheckedCreateWithoutBranchesInput = {
@@ -539,6 +747,14 @@ export type OrganisationUncheckedCreateWithoutBranchesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   users?: Prisma.UserUncheckedCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryUncheckedCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationCreateOrConnectWithoutBranchesInput = {
@@ -566,6 +782,14 @@ export type OrganisationUpdateWithoutBranchesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationUncheckedUpdateWithoutBranchesInput = {
@@ -577,6 +801,750 @@ export type OrganisationUncheckedUpdateWithoutBranchesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUncheckedUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUncheckedUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationCreateWithoutCategoriesInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationUncheckedCreateWithoutCategoriesInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchUncheckedCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryUncheckedCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationCreateOrConnectWithoutCategoriesInput = {
+  where: Prisma.OrganisationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutCategoriesInput, Prisma.OrganisationUncheckedCreateWithoutCategoriesInput>
+}
+
+export type OrganisationUpsertWithoutCategoriesInput = {
+  update: Prisma.XOR<Prisma.OrganisationUpdateWithoutCategoriesInput, Prisma.OrganisationUncheckedUpdateWithoutCategoriesInput>
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutCategoriesInput, Prisma.OrganisationUncheckedCreateWithoutCategoriesInput>
+  where?: Prisma.OrganisationWhereInput
+}
+
+export type OrganisationUpdateToOneWithWhereWithoutCategoriesInput = {
+  where?: Prisma.OrganisationWhereInput
+  data: Prisma.XOR<Prisma.OrganisationUpdateWithoutCategoriesInput, Prisma.OrganisationUncheckedUpdateWithoutCategoriesInput>
+}
+
+export type OrganisationUpdateWithoutCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationUncheckedUpdateWithoutCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUncheckedUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUncheckedUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationCreateWithoutProductsInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationUncheckedCreateWithoutProductsInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchUncheckedCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryUncheckedCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationCreateOrConnectWithoutProductsInput = {
+  where: Prisma.OrganisationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutProductsInput, Prisma.OrganisationUncheckedCreateWithoutProductsInput>
+}
+
+export type OrganisationUpsertWithoutProductsInput = {
+  update: Prisma.XOR<Prisma.OrganisationUpdateWithoutProductsInput, Prisma.OrganisationUncheckedUpdateWithoutProductsInput>
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutProductsInput, Prisma.OrganisationUncheckedCreateWithoutProductsInput>
+  where?: Prisma.OrganisationWhereInput
+}
+
+export type OrganisationUpdateToOneWithWhereWithoutProductsInput = {
+  where?: Prisma.OrganisationWhereInput
+  data: Prisma.XOR<Prisma.OrganisationUpdateWithoutProductsInput, Prisma.OrganisationUncheckedUpdateWithoutProductsInput>
+}
+
+export type OrganisationUpdateWithoutProductsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationUncheckedUpdateWithoutProductsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUncheckedUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUncheckedUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationCreateWithoutSuppliersInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationUncheckedCreateWithoutSuppliersInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchUncheckedCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryUncheckedCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationCreateOrConnectWithoutSuppliersInput = {
+  where: Prisma.OrganisationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutSuppliersInput, Prisma.OrganisationUncheckedCreateWithoutSuppliersInput>
+}
+
+export type OrganisationUpsertWithoutSuppliersInput = {
+  update: Prisma.XOR<Prisma.OrganisationUpdateWithoutSuppliersInput, Prisma.OrganisationUncheckedUpdateWithoutSuppliersInput>
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutSuppliersInput, Prisma.OrganisationUncheckedCreateWithoutSuppliersInput>
+  where?: Prisma.OrganisationWhereInput
+}
+
+export type OrganisationUpdateToOneWithWhereWithoutSuppliersInput = {
+  where?: Prisma.OrganisationWhereInput
+  data: Prisma.XOR<Prisma.OrganisationUpdateWithoutSuppliersInput, Prisma.OrganisationUncheckedUpdateWithoutSuppliersInput>
+}
+
+export type OrganisationUpdateWithoutSuppliersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationUncheckedUpdateWithoutSuppliersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUncheckedUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUncheckedUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationCreateWithoutStockEntriesInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationUncheckedCreateWithoutStockEntriesInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchUncheckedCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationCreateOrConnectWithoutStockEntriesInput = {
+  where: Prisma.OrganisationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutStockEntriesInput, Prisma.OrganisationUncheckedCreateWithoutStockEntriesInput>
+}
+
+export type OrganisationUpsertWithoutStockEntriesInput = {
+  update: Prisma.XOR<Prisma.OrganisationUpdateWithoutStockEntriesInput, Prisma.OrganisationUncheckedUpdateWithoutStockEntriesInput>
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutStockEntriesInput, Prisma.OrganisationUncheckedCreateWithoutStockEntriesInput>
+  where?: Prisma.OrganisationWhereInput
+}
+
+export type OrganisationUpdateToOneWithWhereWithoutStockEntriesInput = {
+  where?: Prisma.OrganisationWhereInput
+  data: Prisma.XOR<Prisma.OrganisationUpdateWithoutStockEntriesInput, Prisma.OrganisationUncheckedUpdateWithoutStockEntriesInput>
+}
+
+export type OrganisationUpdateWithoutStockEntriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationUncheckedUpdateWithoutStockEntriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUncheckedUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationCreateWithoutSalesInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationUncheckedCreateWithoutSalesInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchUncheckedCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryUncheckedCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationCreateOrConnectWithoutSalesInput = {
+  where: Prisma.OrganisationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutSalesInput, Prisma.OrganisationUncheckedCreateWithoutSalesInput>
+}
+
+export type OrganisationUpsertWithoutSalesInput = {
+  update: Prisma.XOR<Prisma.OrganisationUpdateWithoutSalesInput, Prisma.OrganisationUncheckedUpdateWithoutSalesInput>
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutSalesInput, Prisma.OrganisationUncheckedCreateWithoutSalesInput>
+  where?: Prisma.OrganisationWhereInput
+}
+
+export type OrganisationUpdateToOneWithWhereWithoutSalesInput = {
+  where?: Prisma.OrganisationWhereInput
+  data: Prisma.XOR<Prisma.OrganisationUpdateWithoutSalesInput, Prisma.OrganisationUncheckedUpdateWithoutSalesInput>
+}
+
+export type OrganisationUpdateWithoutSalesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationUncheckedUpdateWithoutSalesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUncheckedUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUncheckedUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationCreateWithoutDailyReportsInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationUncheckedCreateWithoutDailyReportsInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchUncheckedCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryUncheckedCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationCreateOrConnectWithoutDailyReportsInput = {
+  where: Prisma.OrganisationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutDailyReportsInput, Prisma.OrganisationUncheckedCreateWithoutDailyReportsInput>
+}
+
+export type OrganisationUpsertWithoutDailyReportsInput = {
+  update: Prisma.XOR<Prisma.OrganisationUpdateWithoutDailyReportsInput, Prisma.OrganisationUncheckedUpdateWithoutDailyReportsInput>
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutDailyReportsInput, Prisma.OrganisationUncheckedCreateWithoutDailyReportsInput>
+  where?: Prisma.OrganisationWhereInput
+}
+
+export type OrganisationUpdateToOneWithWhereWithoutDailyReportsInput = {
+  where?: Prisma.OrganisationWhereInput
+  data: Prisma.XOR<Prisma.OrganisationUpdateWithoutDailyReportsInput, Prisma.OrganisationUncheckedUpdateWithoutDailyReportsInput>
+}
+
+export type OrganisationUpdateWithoutDailyReportsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationUncheckedUpdateWithoutDailyReportsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUncheckedUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUncheckedUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationCreateWithoutNotificationsInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationUncheckedCreateWithoutNotificationsInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchUncheckedCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryUncheckedCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationCreateOrConnectWithoutNotificationsInput = {
+  where: Prisma.OrganisationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutNotificationsInput, Prisma.OrganisationUncheckedCreateWithoutNotificationsInput>
+}
+
+export type OrganisationUpsertWithoutNotificationsInput = {
+  update: Prisma.XOR<Prisma.OrganisationUpdateWithoutNotificationsInput, Prisma.OrganisationUncheckedUpdateWithoutNotificationsInput>
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutNotificationsInput, Prisma.OrganisationUncheckedCreateWithoutNotificationsInput>
+  where?: Prisma.OrganisationWhereInput
+}
+
+export type OrganisationUpdateToOneWithWhereWithoutNotificationsInput = {
+  where?: Prisma.OrganisationWhereInput
+  data: Prisma.XOR<Prisma.OrganisationUpdateWithoutNotificationsInput, Prisma.OrganisationUncheckedUpdateWithoutNotificationsInput>
+}
+
+export type OrganisationUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationUncheckedUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUncheckedUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUncheckedUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationCreateWithoutAuditLogsInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationUncheckedCreateWithoutAuditLogsInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchUncheckedCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryUncheckedCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationCreateOrConnectWithoutAuditLogsInput = {
+  where: Prisma.OrganisationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutAuditLogsInput, Prisma.OrganisationUncheckedCreateWithoutAuditLogsInput>
+}
+
+export type OrganisationUpsertWithoutAuditLogsInput = {
+  update: Prisma.XOR<Prisma.OrganisationUpdateWithoutAuditLogsInput, Prisma.OrganisationUncheckedUpdateWithoutAuditLogsInput>
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutAuditLogsInput, Prisma.OrganisationUncheckedCreateWithoutAuditLogsInput>
+  where?: Prisma.OrganisationWhereInput
+}
+
+export type OrganisationUpdateToOneWithWhereWithoutAuditLogsInput = {
+  where?: Prisma.OrganisationWhereInput
+  data: Prisma.XOR<Prisma.OrganisationUpdateWithoutAuditLogsInput, Prisma.OrganisationUncheckedUpdateWithoutAuditLogsInput>
+}
+
+export type OrganisationUpdateWithoutAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationUncheckedUpdateWithoutAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUncheckedUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUncheckedUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
 }
 
 
@@ -587,11 +1555,27 @@ export type OrganisationUncheckedUpdateWithoutBranchesInput = {
 export type OrganisationCountOutputType = {
   branches: number
   users: number
+  categories: number
+  products: number
+  suppliers: number
+  stockEntries: number
+  sales: number
+  dailyReports: number
+  notifications: number
+  auditLogs: number
 }
 
 export type OrganisationCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   branches?: boolean | OrganisationCountOutputTypeCountBranchesArgs
   users?: boolean | OrganisationCountOutputTypeCountUsersArgs
+  categories?: boolean | OrganisationCountOutputTypeCountCategoriesArgs
+  products?: boolean | OrganisationCountOutputTypeCountProductsArgs
+  suppliers?: boolean | OrganisationCountOutputTypeCountSuppliersArgs
+  stockEntries?: boolean | OrganisationCountOutputTypeCountStockEntriesArgs
+  sales?: boolean | OrganisationCountOutputTypeCountSalesArgs
+  dailyReports?: boolean | OrganisationCountOutputTypeCountDailyReportsArgs
+  notifications?: boolean | OrganisationCountOutputTypeCountNotificationsArgs
+  auditLogs?: boolean | OrganisationCountOutputTypeCountAuditLogsArgs
 }
 
 /**
@@ -618,6 +1602,62 @@ export type OrganisationCountOutputTypeCountUsersArgs<ExtArgs extends runtime.Ty
   where?: Prisma.UserWhereInput
 }
 
+/**
+ * OrganisationCountOutputType without action
+ */
+export type OrganisationCountOutputTypeCountCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CategoryWhereInput
+}
+
+/**
+ * OrganisationCountOutputType without action
+ */
+export type OrganisationCountOutputTypeCountProductsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProductWhereInput
+}
+
+/**
+ * OrganisationCountOutputType without action
+ */
+export type OrganisationCountOutputTypeCountSuppliersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SupplierWhereInput
+}
+
+/**
+ * OrganisationCountOutputType without action
+ */
+export type OrganisationCountOutputTypeCountStockEntriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StockEntryWhereInput
+}
+
+/**
+ * OrganisationCountOutputType without action
+ */
+export type OrganisationCountOutputTypeCountSalesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SaleWhereInput
+}
+
+/**
+ * OrganisationCountOutputType without action
+ */
+export type OrganisationCountOutputTypeCountDailyReportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DailyReportWhereInput
+}
+
+/**
+ * OrganisationCountOutputType without action
+ */
+export type OrganisationCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotificationWhereInput
+}
+
+/**
+ * OrganisationCountOutputType without action
+ */
+export type OrganisationCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AuditLogWhereInput
+}
+
 
 export type OrganisationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -629,6 +1669,14 @@ export type OrganisationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   updatedAt?: boolean
   branches?: boolean | Prisma.Organisation$branchesArgs<ExtArgs>
   users?: boolean | Prisma.Organisation$usersArgs<ExtArgs>
+  categories?: boolean | Prisma.Organisation$categoriesArgs<ExtArgs>
+  products?: boolean | Prisma.Organisation$productsArgs<ExtArgs>
+  suppliers?: boolean | Prisma.Organisation$suppliersArgs<ExtArgs>
+  stockEntries?: boolean | Prisma.Organisation$stockEntriesArgs<ExtArgs>
+  sales?: boolean | Prisma.Organisation$salesArgs<ExtArgs>
+  dailyReports?: boolean | Prisma.Organisation$dailyReportsArgs<ExtArgs>
+  notifications?: boolean | Prisma.Organisation$notificationsArgs<ExtArgs>
+  auditLogs?: boolean | Prisma.Organisation$auditLogsArgs<ExtArgs>
   _count?: boolean | Prisma.OrganisationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["organisation"]>
 
@@ -666,6 +1714,14 @@ export type OrganisationOmit<ExtArgs extends runtime.Types.Extensions.InternalAr
 export type OrganisationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   branches?: boolean | Prisma.Organisation$branchesArgs<ExtArgs>
   users?: boolean | Prisma.Organisation$usersArgs<ExtArgs>
+  categories?: boolean | Prisma.Organisation$categoriesArgs<ExtArgs>
+  products?: boolean | Prisma.Organisation$productsArgs<ExtArgs>
+  suppliers?: boolean | Prisma.Organisation$suppliersArgs<ExtArgs>
+  stockEntries?: boolean | Prisma.Organisation$stockEntriesArgs<ExtArgs>
+  sales?: boolean | Prisma.Organisation$salesArgs<ExtArgs>
+  dailyReports?: boolean | Prisma.Organisation$dailyReportsArgs<ExtArgs>
+  notifications?: boolean | Prisma.Organisation$notificationsArgs<ExtArgs>
+  auditLogs?: boolean | Prisma.Organisation$auditLogsArgs<ExtArgs>
   _count?: boolean | Prisma.OrganisationCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type OrganisationIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -676,6 +1732,14 @@ export type $OrganisationPayload<ExtArgs extends runtime.Types.Extensions.Intern
   objects: {
     branches: Prisma.$BranchPayload<ExtArgs>[]
     users: Prisma.$UserPayload<ExtArgs>[]
+    categories: Prisma.$CategoryPayload<ExtArgs>[]
+    products: Prisma.$ProductPayload<ExtArgs>[]
+    suppliers: Prisma.$SupplierPayload<ExtArgs>[]
+    stockEntries: Prisma.$StockEntryPayload<ExtArgs>[]
+    sales: Prisma.$SalePayload<ExtArgs>[]
+    dailyReports: Prisma.$DailyReportPayload<ExtArgs>[]
+    notifications: Prisma.$NotificationPayload<ExtArgs>[]
+    auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1081,6 +2145,14 @@ export interface Prisma__OrganisationClient<T, Null = never, ExtArgs extends run
   readonly [Symbol.toStringTag]: "PrismaPromise"
   branches<T extends Prisma.Organisation$branchesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organisation$branchesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BranchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   users<T extends Prisma.Organisation$usersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organisation$usersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  categories<T extends Prisma.Organisation$categoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organisation$categoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  products<T extends Prisma.Organisation$productsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organisation$productsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  suppliers<T extends Prisma.Organisation$suppliersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organisation$suppliersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupplierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  stockEntries<T extends Prisma.Organisation$stockEntriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organisation$stockEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StockEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  sales<T extends Prisma.Organisation$salesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organisation$salesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SalePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  dailyReports<T extends Prisma.Organisation$dailyReportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organisation$dailyReportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DailyReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  notifications<T extends Prisma.Organisation$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organisation$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  auditLogs<T extends Prisma.Organisation$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organisation$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1555,6 +2627,198 @@ export type Organisation$usersArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
+}
+
+/**
+ * Organisation.categories
+ */
+export type Organisation$categoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Category
+   */
+  select?: Prisma.CategorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Category
+   */
+  omit?: Prisma.CategoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CategoryInclude<ExtArgs> | null
+  where?: Prisma.CategoryWhereInput
+  orderBy?: Prisma.CategoryOrderByWithRelationInput | Prisma.CategoryOrderByWithRelationInput[]
+  cursor?: Prisma.CategoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CategoryScalarFieldEnum | Prisma.CategoryScalarFieldEnum[]
+}
+
+/**
+ * Organisation.products
+ */
+export type Organisation$productsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Product
+   */
+  select?: Prisma.ProductSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Product
+   */
+  omit?: Prisma.ProductOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProductInclude<ExtArgs> | null
+  where?: Prisma.ProductWhereInput
+  orderBy?: Prisma.ProductOrderByWithRelationInput | Prisma.ProductOrderByWithRelationInput[]
+  cursor?: Prisma.ProductWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProductScalarFieldEnum | Prisma.ProductScalarFieldEnum[]
+}
+
+/**
+ * Organisation.suppliers
+ */
+export type Organisation$suppliersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Supplier
+   */
+  select?: Prisma.SupplierSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Supplier
+   */
+  omit?: Prisma.SupplierOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SupplierInclude<ExtArgs> | null
+  where?: Prisma.SupplierWhereInput
+  orderBy?: Prisma.SupplierOrderByWithRelationInput | Prisma.SupplierOrderByWithRelationInput[]
+  cursor?: Prisma.SupplierWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SupplierScalarFieldEnum | Prisma.SupplierScalarFieldEnum[]
+}
+
+/**
+ * Organisation.stockEntries
+ */
+export type Organisation$stockEntriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the StockEntry
+   */
+  select?: Prisma.StockEntrySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the StockEntry
+   */
+  omit?: Prisma.StockEntryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StockEntryInclude<ExtArgs> | null
+  where?: Prisma.StockEntryWhereInput
+  orderBy?: Prisma.StockEntryOrderByWithRelationInput | Prisma.StockEntryOrderByWithRelationInput[]
+  cursor?: Prisma.StockEntryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StockEntryScalarFieldEnum | Prisma.StockEntryScalarFieldEnum[]
+}
+
+/**
+ * Organisation.sales
+ */
+export type Organisation$salesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Sale
+   */
+  select?: Prisma.SaleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Sale
+   */
+  omit?: Prisma.SaleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SaleInclude<ExtArgs> | null
+  where?: Prisma.SaleWhereInput
+  orderBy?: Prisma.SaleOrderByWithRelationInput | Prisma.SaleOrderByWithRelationInput[]
+  cursor?: Prisma.SaleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SaleScalarFieldEnum | Prisma.SaleScalarFieldEnum[]
+}
+
+/**
+ * Organisation.dailyReports
+ */
+export type Organisation$dailyReportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DailyReport
+   */
+  select?: Prisma.DailyReportSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DailyReport
+   */
+  omit?: Prisma.DailyReportOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DailyReportInclude<ExtArgs> | null
+  where?: Prisma.DailyReportWhereInput
+  orderBy?: Prisma.DailyReportOrderByWithRelationInput | Prisma.DailyReportOrderByWithRelationInput[]
+  cursor?: Prisma.DailyReportWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DailyReportScalarFieldEnum | Prisma.DailyReportScalarFieldEnum[]
+}
+
+/**
+ * Organisation.notifications
+ */
+export type Organisation$notificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Notification
+   */
+  select?: Prisma.NotificationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Notification
+   */
+  omit?: Prisma.NotificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificationInclude<ExtArgs> | null
+  where?: Prisma.NotificationWhereInput
+  orderBy?: Prisma.NotificationOrderByWithRelationInput | Prisma.NotificationOrderByWithRelationInput[]
+  cursor?: Prisma.NotificationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
+}
+
+/**
+ * Organisation.auditLogs
+ */
+export type Organisation$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AuditLog
+   */
+  select?: Prisma.AuditLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AuditLog
+   */
+  omit?: Prisma.AuditLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuditLogInclude<ExtArgs> | null
+  where?: Prisma.AuditLogWhereInput
+  orderBy?: Prisma.AuditLogOrderByWithRelationInput | Prisma.AuditLogOrderByWithRelationInput[]
+  cursor?: Prisma.AuditLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AuditLogScalarFieldEnum | Prisma.AuditLogScalarFieldEnum[]
 }
 
 /**

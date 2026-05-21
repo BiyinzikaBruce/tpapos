@@ -71,3 +71,58 @@ export type Organisation = Prisma.OrganisationModel
  * 
  */
 export type Branch = Prisma.BranchModel
+/**
+ * Model Category
+ * 
+ */
+export type Category = Prisma.CategoryModel
+/**
+ * Model Product
+ * 
+ */
+export type Product = Prisma.ProductModel
+/**
+ * Model ProductBranchStock
+ * 
+ */
+export type ProductBranchStock = Prisma.ProductBranchStockModel
+/**
+ * Model Supplier
+ * 
+ */
+export type Supplier = Prisma.SupplierModel
+/**
+ * Model StockEntry
+ * 
+ */
+export type StockEntry = Prisma.StockEntryModel
+/**
+ * Model Sale
+ * 
+ */
+export type Sale = Prisma.SaleModel
+/**
+ * Model SaleItem
+ * 
+ */
+export type SaleItem = Prisma.SaleItemModel
+/**
+ * Model DailyReport
+ * 
+ */
+export type DailyReport = Prisma.DailyReportModel
+/**
+ * Model Message
+ * 
+ */
+export type Message = Prisma.MessageModel
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = Prisma.NotificationModel
+/**
+ * Model AuditLog
+ * 
+ */
+export type AuditLog = Prisma.AuditLogModel

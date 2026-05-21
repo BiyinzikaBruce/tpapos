@@ -56,7 +56,18 @@ export const ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   Organisation: 'Organisation',
-  Branch: 'Branch'
+  Branch: 'Branch',
+  Category: 'Category',
+  Product: 'Product',
+  ProductBranchStock: 'ProductBranchStock',
+  Supplier: 'Supplier',
+  StockEntry: 'StockEntry',
+  Sale: 'Sale',
+  SaleItem: 'SaleItem',
+  DailyReport: 'DailyReport',
+  Message: 'Message',
+  Notification: 'Notification',
+  AuditLog: 'AuditLog'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -162,12 +173,186 @@ export const BranchScalarFieldEnum = {
 export type BranchScalarFieldEnum = (typeof BranchScalarFieldEnum)[keyof typeof BranchScalarFieldEnum]
 
 
+export const CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  organisationId: 'organisationId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
+export const ProductScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  sku: 'sku',
+  description: 'description',
+  imageUrl: 'imageUrl',
+  price: 'price',
+  costPrice: 'costPrice',
+  unit: 'unit',
+  categoryId: 'categoryId',
+  organisationId: 'organisationId',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
+
+
+export const ProductBranchStockScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  branchId: 'branchId',
+  quantity: 'quantity',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProductBranchStockScalarFieldEnum = (typeof ProductBranchStockScalarFieldEnum)[keyof typeof ProductBranchStockScalarFieldEnum]
+
+
+export const SupplierScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  contactName: 'contactName',
+  phone: 'phone',
+  email: 'email',
+  address: 'address',
+  organisationId: 'organisationId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SupplierScalarFieldEnum = (typeof SupplierScalarFieldEnum)[keyof typeof SupplierScalarFieldEnum]
+
+
+export const StockEntryScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  quantity: 'quantity',
+  notes: 'notes',
+  organisationId: 'organisationId',
+  branchId: 'branchId',
+  productId: 'productId',
+  supplierId: 'supplierId',
+  userId: 'userId',
+  transferStatus: 'transferStatus',
+  toBranchId: 'toBranchId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StockEntryScalarFieldEnum = (typeof StockEntryScalarFieldEnum)[keyof typeof StockEntryScalarFieldEnum]
+
+
+export const SaleScalarFieldEnum = {
+  id: 'id',
+  organisationId: 'organisationId',
+  branchId: 'branchId',
+  cashierId: 'cashierId',
+  paymentMethod: 'paymentMethod',
+  status: 'status',
+  subtotal: 'subtotal',
+  discount: 'discount',
+  total: 'total',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SaleScalarFieldEnum = (typeof SaleScalarFieldEnum)[keyof typeof SaleScalarFieldEnum]
+
+
+export const SaleItemScalarFieldEnum = {
+  id: 'id',
+  saleId: 'saleId',
+  productId: 'productId',
+  quantity: 'quantity',
+  unitPrice: 'unitPrice',
+  total: 'total'
+} as const
+
+export type SaleItemScalarFieldEnum = (typeof SaleItemScalarFieldEnum)[keyof typeof SaleItemScalarFieldEnum]
+
+
+export const DailyReportScalarFieldEnum = {
+  id: 'id',
+  organisationId: 'organisationId',
+  branchId: 'branchId',
+  cashierId: 'cashierId',
+  date: 'date',
+  totalSales: 'totalSales',
+  cashAmount: 'cashAmount',
+  momoAmount: 'momoAmount',
+  salesCount: 'salesCount',
+  notes: 'notes',
+  isReviewed: 'isReviewed',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DailyReportScalarFieldEnum = (typeof DailyReportScalarFieldEnum)[keyof typeof DailyReportScalarFieldEnum]
+
+
+export const MessageScalarFieldEnum = {
+  id: 'id',
+  senderId: 'senderId',
+  recipientId: 'recipientId',
+  subject: 'subject',
+  body: 'body',
+  isRead: 'isRead',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+
+
+export const NotificationScalarFieldEnum = {
+  id: 'id',
+  organisationId: 'organisationId',
+  userId: 'userId',
+  type: 'type',
+  title: 'title',
+  body: 'body',
+  isRead: 'isRead',
+  createdAt: 'createdAt'
+} as const
+
+export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
+
+
+export const AuditLogScalarFieldEnum = {
+  id: 'id',
+  organisationId: 'organisationId',
+  userId: 'userId',
+  action: 'action',
+  entity: 'entity',
+  entityId: 'entityId',
+  details: 'details',
+  createdAt: 'createdAt'
+} as const
+
+export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {
@@ -184,4 +369,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

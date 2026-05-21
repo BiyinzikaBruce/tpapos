@@ -26,3 +26,60 @@ export const Plan = {
 } as const
 
 export type Plan = (typeof Plan)[keyof typeof Plan]
+
+
+export const PaymentMethod = {
+  CASH: 'CASH',
+  MTN_MOMO: 'MTN_MOMO',
+  AIRTEL_MONEY: 'AIRTEL_MONEY'
+} as const
+
+export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]
+
+
+export const SaleStatus = {
+  COMPLETED: 'COMPLETED',
+  VOIDED: 'VOIDED'
+} as const
+
+export type SaleStatus = (typeof SaleStatus)[keyof typeof SaleStatus]
+
+
+export const StockEntryType = {
+  IN: 'IN',
+  OUT: 'OUT',
+  TRANSFER: 'TRANSFER'
+} as const
+
+export type StockEntryType = (typeof StockEntryType)[keyof typeof StockEntryType]
+
+
+export const TransferStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type TransferStatus = (typeof TransferStatus)[keyof typeof TransferStatus]
+
+
+export const NotificationType = {
+  LOW_STOCK: 'LOW_STOCK',
+  NEW_REPORT: 'NEW_REPORT',
+  TRANSFER_REQUEST: 'TRANSFER_REQUEST',
+  NEW_MESSAGE: 'NEW_MESSAGE'
+} as const
+
+export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
+
+
+export const AuditAction = {
+  CREATE: 'CREATE',
+  UPDATE: 'UPDATE',
+  DELETE: 'DELETE',
+  VOID: 'VOID',
+  APPROVE: 'APPROVE',
+  REJECT: 'REJECT'
+} as const
+
+export type AuditAction = (typeof AuditAction)[keyof typeof AuditAction]
