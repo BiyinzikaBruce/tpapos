@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { toast } from "sonner";
-import { Search, ShoppingCart, Trash2, Plus, Minus, X } from "lucide-react";
+import { Search, ShoppingCart, Trash2, Plus, Minus, X, Printer, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -25,9 +25,22 @@ type CartItem = { product: Product; quantity: number };
 
 type Category = { id: string; name: string };
 
+type ReceiptData = {
+  saleId: string;
+  items: { name: string; quantity: number; unitPrice: number; total: number }[];
+  subtotal: number;
+  discount: number;
+  total: number;
+  paymentMethod: string;
+  cashierName: string;
+  branchName?: string;
+  timestamp: string;
+};
+
 interface POSScreenProps {
   organisationId: string;
   branchId: string;
+  branchName?: string;
   cashierName: string;
   initialProducts: Product[];
   initialCategories: Category[];
@@ -41,6 +54,8 @@ const PAYMENT_METHODS = [
 
 export function POSScreen({
   branchId,
+  branchName,
+  cashierName,
   initialProducts,
   initialCategories,
 }: POSScreenProps) {
@@ -50,6 +65,8 @@ export function POSScreen({
   const [paymentMethod, setPaymentMethod] = useState<"CASH" | "MTN_MOMO" | "AIRTEL_MONEY">("CASH");
   const [discount, setDiscount] = useState<number>(0);
   const [isPending, setIsPending] = useState(false);
+  const [receipt, setReceipt] = useState<ReceiptData | null>(null);
+  const receiptRef = useRef<HTMLDivElement>(null);
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase();
@@ -119,7 +136,23 @@ export function POSScreen({
         const err = await res.json();
         throw new Error(err.error ?? "Sale failed");
       }
-      toast.success(`Sale of ${formatUGX(total)} completed!`);
+      const sale = await res.json();
+      setReceipt({
+        saleId: sale.id,
+        items: cart.map((i) => ({
+          name: i.product.name,
+          quantity: i.quantity,
+          unitPrice: i.product.price,
+          total: i.product.price * i.quantity,
+        })),
+        subtotal,
+        discount,
+        total,
+        paymentMethod,
+        cashierName,
+        branchName,
+        timestamp: new Date().toLocaleString("en-UG"),
+      });
       setCart([]);
       setDiscount(0);
     } catch (err) {
@@ -129,8 +162,103 @@ export function POSScreen({
     }
   }
 
+  function handlePrint() {
+    const content = receiptRef.current;
+    if (!content) return;
+    const win = window.open("", "_blank", "width=400,height=600");
+    if (!win) return;
+    win.document.write(`
+      <html><head><title>Receipt</title>
+      <style>
+        body { font-family: monospace; font-size: 12px; padding: 16px; color: #000; background: #fff; }
+        .center { text-align: center; }
+        .bold { font-weight: bold; }
+        .row { display: flex; justify-content: space-between; margin: 2px 0; }
+        .divider { border-top: 1px dashed #000; margin: 6px 0; }
+        .large { font-size: 16px; font-weight: bold; }
+      </style></head><body>${content.innerHTML}</body></html>
+    `);
+    win.document.close();
+    win.focus();
+    win.print();
+    win.close();
+  }
+
   const cartCount = cart.reduce((s, i) => s + i.quantity, 0);
   const inCart = (id: string) => cart.find((i) => i.product.id === id);
+
+  const pmLabel: Record<string, string> = { CASH: "Cash", MTN_MOMO: "MTN MoMo", AIRTEL_MONEY: "Airtel Money" };
+
+  if (receipt) {
+    return (
+      <div className="flex items-start justify-center min-h-screen bg-[#0B0B18] p-6 overflow-y-auto">
+        <div className="w-full max-w-sm">
+          {/* Success header */}
+          <div className="text-center mb-6">
+            <div className="w-14 h-14 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-3">
+              <CheckCircle2 className="w-7 h-7 text-emerald-400" />
+            </div>
+            <h2 className="text-xl font-bold text-[#F1F0FF]">Sale Complete</h2>
+            <p className="text-sm text-[#5C5A7A] mt-1">{receipt.timestamp}</p>
+          </div>
+
+          {/* Receipt slip */}
+          <div ref={receiptRef} className="bg-white text-black rounded-xl p-5 font-mono text-xs shadow-2xl mb-4">
+            <div className="center bold text-sm mb-1">TPAPOS</div>
+            {receipt.branchName && <div className="center">{receipt.branchName}</div>}
+            <div className="center" style={{ color: "#555" }}>Receipt #{receipt.saleId.slice(-8).toUpperCase()}</div>
+            <div className="center" style={{ color: "#555" }}>{receipt.timestamp}</div>
+            <div className="divider" style={{ borderTop: "1px dashed #999", margin: "8px 0" }} />
+            {receipt.items.map((item, i) => (
+              <div key={i}>
+                <div className="bold">{item.name}</div>
+                <div className="row" style={{ display: "flex", justifyContent: "space-between" }}>
+                  <span style={{ color: "#555" }}>{item.quantity} × UGX {item.unitPrice.toLocaleString()}</span>
+                  <span>UGX {item.total.toLocaleString()}</span>
+                </div>
+              </div>
+            ))}
+            <div className="divider" style={{ borderTop: "1px dashed #999", margin: "8px 0" }} />
+            <div className="row" style={{ display: "flex", justifyContent: "space-between" }}>
+              <span>Subtotal</span><span>UGX {receipt.subtotal.toLocaleString()}</span>
+            </div>
+            {receipt.discount > 0 && (
+              <div className="row" style={{ display: "flex", justifyContent: "space-between", color: "#c00" }}>
+                <span>Discount</span><span>-UGX {receipt.discount.toLocaleString()}</span>
+              </div>
+            )}
+            <div className="row bold" style={{ display: "flex", justifyContent: "space-between", fontSize: "14px", marginTop: "4px" }}>
+              <span>TOTAL</span><span>UGX {receipt.total.toLocaleString()}</span>
+            </div>
+            <div className="divider" style={{ borderTop: "1px dashed #999", margin: "8px 0" }} />
+            <div className="row" style={{ display: "flex", justifyContent: "space-between" }}>
+              <span>Payment</span><span>{pmLabel[receipt.paymentMethod] ?? receipt.paymentMethod}</span>
+            </div>
+            <div style={{ color: "#555" }}>Served by: {receipt.cashierName}</div>
+            <div className="divider" style={{ borderTop: "1px dashed #999", margin: "8px 0" }} />
+            <div className="center" style={{ color: "#555" }}>Thank you for your purchase!</div>
+          </div>
+
+          <div className="flex gap-3">
+            <Button
+              onClick={handlePrint}
+              variant="outline"
+              className="flex-1 border-[#2A2A45] text-[#A09EC0] hover:text-[#F1F0FF] hover:border-[#7C3AED]"
+            >
+              <Printer className="w-4 h-4 mr-2" />
+              Print
+            </Button>
+            <Button
+              onClick={() => setReceipt(null)}
+              className="flex-1 bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-semibold"
+            >
+              New Sale
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-screen overflow-hidden">

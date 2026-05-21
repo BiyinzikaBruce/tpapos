@@ -1,16 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { format } from "date-fns";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { formatUGX } from "@/lib/format";
-import { ShoppingCart, Calendar } from "lucide-react";
+import { ShoppingCart, Calendar, Ban } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 type SaleItem = {
   id: string;
@@ -52,6 +54,31 @@ interface HistoryClientProps {
 export function HistoryClient({ branchId }: HistoryClientProps) {
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10));
   const [selectedSale, setSelectedSale] = useState<Sale | null>(null);
+  const [voiding, setVoiding] = useState(false);
+  const queryClient = useQueryClient();
+
+  async function handleVoid(saleId: string) {
+    if (!confirm("Void this sale? Stock will be restored.")) return;
+    setVoiding(true);
+    try {
+      const res = await fetch(`/api/sales/${saleId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "VOID" }),
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error ?? "Failed to void");
+      }
+      toast.success("Sale voided and stock restored");
+      setSelectedSale((prev) => prev ? { ...prev, status: "VOIDED" } : null);
+      queryClient.invalidateQueries({ queryKey: ["sales", branchId, selectedDate] });
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to void sale");
+    } finally {
+      setVoiding(false);
+    }
+  }
 
   const { data: sales = [], isLoading } = useQuery<Sale[]>({
     queryKey: ["sales", branchId, selectedDate],
@@ -194,6 +221,21 @@ export function HistoryClient({ branchId }: HistoryClientProps) {
                   <span className="text-[#7C3AED]">{formatUGX(selectedSale.total)}</span>
                 </div>
               </div>
+
+              {selectedSale.status === "COMPLETED" && (
+                <div className="mt-6 pt-4 border-t" style={{ borderColor: "var(--color-border-subtle)" }}>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => handleVoid(selectedSale.id)}
+                    disabled={voiding}
+                    className="w-full border-red-500/30 text-red-400 hover:bg-red-500/10 hover:text-red-300 hover:border-red-500/50"
+                  >
+                    <Ban className="w-3.5 h-3.5 mr-2" />
+                    {voiding ? "Voiding..." : "Void Sale"}
+                  </Button>
+                </div>
+              )}
             </>
           )}
         </SheetContent>

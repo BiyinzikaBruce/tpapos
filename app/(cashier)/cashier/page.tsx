@@ -19,7 +19,7 @@ export default async function CashierPage() {
     );
   }
 
-  const [products, categories] = await Promise.all([
+  const [products, categories, branch] = await Promise.all([
     db.product.findMany({
       where: { organisationId, isActive: true },
       include: {
@@ -33,6 +33,7 @@ export default async function CashierPage() {
       orderBy: { name: "asc" },
       select: { id: true, name: true },
     }),
+    db.branch.findUnique({ where: { id: branchId }, select: { name: true } }),
   ]);
 
   const serialized = products.map((p) => ({
@@ -50,6 +51,7 @@ export default async function CashierPage() {
     <POSScreen
       organisationId={organisationId}
       branchId={branchId}
+      branchName={branch?.name}
       cashierName={session.user.name}
       initialProducts={serialized}
       initialCategories={categories}
