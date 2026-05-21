@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { getCachedOrFetch } from "@/lib/cache";
+import { getCachedOrFetch, invalidateTag } from "@/lib/cache";
 
 export async function GET(req: NextRequest) {
   const session = await auth.api.getSession({ headers: req.headers });
@@ -37,4 +37,21 @@ export async function GET(req: NextRequest) {
   );
 
   return NextResponse.json(products);
+}
+
+export async function POST(req: NextRequest) {
+  const session = await auth.api.getSession({ headers: req.headers });
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const orgId = (session.user as { organisationId?: string }).organisationId;
+  if (!orgId) return NextResponse.json({ error: "No org" }, { status: 400 });
+
+  const { name, sku, price, costPrice, unit, categoryId } = await req.json();
+  if (!name || !price || !categoryId) return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+
+  const product = await db.product.create({
+    data: { name, sku, price, costPrice: costPrice || null, unit: unit || "pcs", categoryId, organisationId: orgId },
+    include: { category: true },
+  });
+  await invalidateTag(`products:${orgId}`);
+  return NextResponse.json({ ...product, price: Number(product.price), costPrice: product.costPrice ? Number(product.costPrice) : null }, { status: 201 });
 }
