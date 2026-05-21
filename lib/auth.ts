@@ -5,14 +5,19 @@ import { sendResetPasswordEmail } from "./email";
 
 const baseUrl = process.env.BETTER_AUTH_URL ?? "http://localhost:3000";
 
+// Collect all trusted origins — covers production, branch previews, and unique deploy URLs
+const buildTrustedOrigins = () => {
+  const origins = new Set<string>([baseUrl, "http://localhost:3000"]);
+  if (process.env.NEXT_PUBLIC_APP_URL) origins.add(process.env.NEXT_PUBLIC_APP_URL);
+  if (process.env.VERCEL_URL) origins.add(`https://${process.env.VERCEL_URL}`);
+  if (process.env.VERCEL_BRANCH_URL) origins.add(`https://${process.env.VERCEL_BRANCH_URL}`);
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) origins.add(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`);
+  return Array.from(origins);
+};
+
 export const auth = betterAuth({
   baseURL: baseUrl,
-  trustedOrigins: [
-    baseUrl,
-    "https://tpa-pos.vercel.app",
-    ...(process.env.VERCEL_URL ? [`https://${process.env.VERCEL_URL}`] : []),
-    ...(process.env.NEXT_PUBLIC_APP_URL ? [process.env.NEXT_PUBLIC_APP_URL] : []),
-  ],
+  trustedOrigins: buildTrustedOrigins(),
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
