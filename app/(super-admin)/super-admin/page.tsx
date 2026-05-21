@@ -1,6 +1,8 @@
 import { db } from "@/lib/db";
 import { Shield, Building2, Users, Package, ShoppingCart } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function SuperAdminPlatformPage() {
   const [orgCount, userCount, productCount, saleCount] = await Promise.all([
     db.organisation.count(),

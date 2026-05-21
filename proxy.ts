@@ -27,7 +27,13 @@ export async function proxy(req: NextRequest) {
   );
   if (isPublic) return NextResponse.next();
 
-  const session = await auth.api.getSession({ headers: req.headers });
+  let session;
+  try {
+    session = await auth.api.getSession({ headers: req.headers });
+  } catch {
+    // DB unavailable in edge — let the route's own layout handle auth
+    return NextResponse.next();
+  }
 
   if (!session) {
     return NextResponse.redirect(new URL("/login", req.url));

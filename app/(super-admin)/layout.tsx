@@ -14,8 +14,8 @@ export default async function SuperAdminLayout({ children }: { children: React.R
     console.error("[super-admin layout] getSession threw:", err);
     redirect("/login");
   }
-  if (!session) redirect("/login");
-  const role = (session.user as { role?: string }).role;
+  if (!session?.user) redirect("/login");
+  const role = (session.user as { role?: string }).role ?? "";
   if (role !== "SUPER_ADMIN") redirect("/login");
 
   return (
@@ -24,7 +24,7 @@ export default async function SuperAdminLayout({ children }: { children: React.R
         navItems={superAdminNav}
         orgName="TPAPOS Platform"
         orgLogoUrl="/logo.png"
-        userName={session.user.name}
+        userName={session.user.name ?? "Super Admin"}
         userRole="SUPER ADMIN"
       />
       <div className="flex-1 flex flex-col" style={{ marginLeft: "var(--sidebar-width)" }}>
