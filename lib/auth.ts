@@ -20,16 +20,16 @@ export const auth = betterAuth({
   },
   session: {
     additionalFields: {
-      role: { type: "string" },
-      organisationId: { type: "string" },
-      branchId: { type: "string" },
+      role: { type: "string", defaultValue: "CASHIER" },
+      organisationId: { type: "string", required: false, defaultValue: "" },
+      branchId: { type: "string", required: false, defaultValue: "" },
     },
   },
   user: {
     additionalFields: {
-      role: { type: "string" },
-      organisationId: { type: "string" },
-      branchId: { type: "string" },
+      role: { type: "string", defaultValue: "CASHIER" },
+      organisationId: { type: "string", required: false, defaultValue: "" },
+      branchId: { type: "string", required: false, defaultValue: "" },
     },
   },
 });

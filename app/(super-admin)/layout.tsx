@@ -4,8 +4,16 @@ import { redirect } from "next/navigation";
 import { Sidebar } from "@/components/layout/sidebar";
 import { superAdminNav } from "@/components/layout/nav-config";
 
+export const dynamic = "force-dynamic";
+
 export default async function SuperAdminLayout({ children }: { children: React.ReactNode }) {
-  const session = await auth.api.getSession({ headers: await headers() });
+  let session;
+  try {
+    session = await auth.api.getSession({ headers: await headers() });
+  } catch (err) {
+    console.error("[super-admin layout] getSession threw:", err);
+    redirect("/login");
+  }
   if (!session) redirect("/login");
   const role = (session.user as { role?: string }).role;
   if (role !== "SUPER_ADMIN") redirect("/login");
