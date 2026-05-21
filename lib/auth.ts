@@ -3,7 +3,16 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import prisma from "./prisma";
 import { sendResetPasswordEmail } from "./email";
 
+const baseUrl = process.env.BETTER_AUTH_URL ?? "http://localhost:3000";
+
 export const auth = betterAuth({
+  baseURL: baseUrl,
+  trustedOrigins: [
+    baseUrl,
+    "https://tpa-pos.vercel.app",
+    ...(process.env.VERCEL_URL ? [`https://${process.env.VERCEL_URL}`] : []),
+    ...(process.env.NEXT_PUBLIC_APP_URL ? [process.env.NEXT_PUBLIC_APP_URL] : []),
+  ],
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
