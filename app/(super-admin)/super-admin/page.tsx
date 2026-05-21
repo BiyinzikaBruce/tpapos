@@ -2,18 +2,26 @@ import { db } from "@/lib/db";
 import { Shield, Building2, Users, Package, ShoppingCart } from "lucide-react";
 
 export default async function SuperAdminPlatformPage() {
-  const [orgCount, userCount, productCount, saleCount] = await Promise.all([
-    db.organisation.count(),
-    db.user.count({ where: { role: { not: "SUPER_ADMIN" } } }),
-    db.product.count(),
-    db.sale.count(),
-  ]);
+  let orgCount = 0, userCount = 0, productCount = 0, saleCount = 0;
+  let recentOrgs: { id: string; name: string; plan: string; _count: { branches: number; users: number } }[] = [];
 
-  const recentOrgs = await db.organisation.findMany({
-    orderBy: { createdAt: "desc" },
-    take: 5,
-    include: { _count: { select: { branches: true, users: true } } },
-  });
+  try {
+    [orgCount, userCount, productCount, saleCount] = await Promise.all([
+      db.organisation.count(),
+      db.user.count({ where: { role: { not: "SUPER_ADMIN" as never } } }),
+      db.product.count(),
+      db.sale.count(),
+    ]);
+
+    recentOrgs = await db.organisation.findMany({
+      orderBy: { createdAt: "desc" },
+      take: 5,
+      include: { _count: { select: { branches: true, users: true } } },
+    });
+  } catch (err) {
+    console.error("[super-admin page] DB error:", err);
+    throw err;
+  }
 
   const stats = [
     { icon: Building2, label: "Organisations", value: orgCount, color: "#7C3AED" },
@@ -34,7 +42,6 @@ export default async function SuperAdminPlatformPage() {
         </div>
       </div>
 
-      {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {stats.map(({ icon: Icon, label, value, color }) => (
           <div key={label} className="rounded-xl border p-5" style={{ borderColor: "#2A2A45", background: "#12122A" }}>
@@ -47,7 +54,6 @@ export default async function SuperAdminPlatformPage() {
         ))}
       </div>
 
-      {/* Recent orgs */}
       <div className="rounded-xl border p-5" style={{ borderColor: "#2A2A45", background: "#12122A" }}>
         <h3 className="text-sm font-semibold text-[#F1F0FF] mb-4">Recent Organisations</h3>
         <div className="space-y-3">
@@ -62,7 +68,9 @@ export default async function SuperAdminPlatformPage() {
                   <p className="text-xs text-[#5C5A7A]">{org._count.branches} branches · {org._count.users} users</p>
                 </div>
               </div>
-              <span className={`text-xs px-2 py-0.5 rounded-full ${org.plan === "PRO" ? "bg-amber-500/10 text-amber-400" : "bg-[#2A2A45] text-[#5C5A7A]"}`}>{org.plan}</span>
+              <span className={`text-xs px-2 py-0.5 rounded-full ${org.plan === "PRO" ? "bg-amber-500/10 text-amber-400" : "bg-[#2A2A45] text-[#5C5A7A]"}`}>
+                {org.plan}
+              </span>
             </div>
           ))}
         </div>
