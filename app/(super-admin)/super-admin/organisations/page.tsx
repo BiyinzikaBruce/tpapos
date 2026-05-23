@@ -3,7 +3,10 @@ import { OrganisationsClient } from "@/components/super-admin/organisations-clie
 
 export default async function SuperAdminOrganisationsPage() {
   const orgs = await db.organisation.findMany({
-    include: { _count: { select: { branches: true, users: true, products: true, sales: true } } },
+    include: {
+      _count: { select: { branches: true, users: true, products: true, sales: true } },
+      users: { where: { role: "ADMIN" }, select: { id: true, name: true, email: true, createdAt: true } },
+    },
     orderBy: { createdAt: "desc" },
   });
 

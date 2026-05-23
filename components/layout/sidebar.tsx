@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { LogoutButton } from "@/components/auth/logout-button";
 import type { NavItem } from "./nav-config";
@@ -33,6 +34,7 @@ export function Sidebar({
   userRole,
 }: SidebarProps) {
   const pathname = usePathname();
+  const [logoError, setLogoError] = useState(false);
 
   return (
     <aside
@@ -45,12 +47,13 @@ export function Sidebar({
     >
       {/* Org logo + name */}
       <div className="flex flex-col items-center gap-2 px-4 py-5 border-b" style={{ borderColor: "var(--color-border-subtle)" }}>
-        {orgLogoUrl ? (
+        {orgLogoUrl && !logoError ? (
           <>
             <img
               src={orgLogoUrl}
               alt={orgName}
               className="w-full max-h-20 object-contain rounded-xl"
+              onError={() => setLogoError(true)}
             />
             <span className="text-[0.75rem] font-medium text-[#5C5A7A] truncate text-center">{orgName}</span>
           </>
