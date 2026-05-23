@@ -9,13 +9,13 @@ import type { NavItem } from "./nav-config";
 import {
   LayoutDashboard, Building2, Users, Package, Warehouse, ShoppingCart,
   BarChart3, FileText, MessageCircle, Bell, Settings, Truck,
-  ArrowLeftRight, Download, Monitor, Shield, FolderOpen, LucideIcon,
+  ArrowLeftRight, Download, Monitor, Shield, FolderOpen, Tag, LucideIcon,
 } from "lucide-react";
 
 const ICON_MAP: Record<string, LucideIcon> = {
   LayoutDashboard, Building2, Users, Package, Warehouse, ShoppingCart,
   BarChart3, FileText, MessageCircle, Bell, Settings, Truck,
-  ArrowLeftRight, Download, Monitor, Shield, FolderOpen,
+  ArrowLeftRight, Download, Monitor, Shield, FolderOpen, Tag,
 };
 
 interface SidebarProps {

@@ -13,6 +13,7 @@ export const adminNav: NavItem[] = [
   { label: "Dashboard", href: "/dashboard", icon: "LayoutDashboard" },
   { label: "Branches", href: "/dashboard/branches", icon: "Building2" },
   { label: "Users", href: "/dashboard/users", icon: "Users" },
+  { label: "Categories", href: "/dashboard/categories", icon: "Tag" },
   { label: "Products", href: "/dashboard/products", icon: "Package" },
   { label: "Inventory", href: "/dashboard/inventory", icon: "Warehouse" },
   { label: "Sales", href: "/dashboard/sales", icon: "ShoppingCart" },
