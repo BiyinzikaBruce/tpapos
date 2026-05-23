@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { invalidateTag } from "@/lib/cache";
+import { canAddBranch } from "@/lib/plan";
 
 export async function GET(req: NextRequest) {
   const session = await auth.api.getSession({ headers: req.headers });
@@ -25,6 +26,9 @@ export async function POST(req: NextRequest) {
 
   const { name, location, phone } = await req.json();
   if (!name) return NextResponse.json({ error: "Name required" }, { status: 400 });
+
+  const planCheck = await canAddBranch(orgId);
+  if (!planCheck.ok) return NextResponse.json({ error: planCheck.error, code: "PLAN_LIMIT" }, { status: 403 });
 
   const branch = await db.branch.create({ data: { name, location, phone, organisationId: orgId } });
   await invalidateTag(`branches:${orgId}`);

@@ -205,6 +205,7 @@ export type BranchWhereInput = {
   sales?: Prisma.SaleListRelationFilter
   dailyReports?: Prisma.DailyReportListRelationFilter
   productBranchStocks?: Prisma.ProductBranchStockListRelationFilter
+  documents?: Prisma.DocumentListRelationFilter
 }
 
 export type BranchOrderByWithRelationInput = {
@@ -222,6 +223,7 @@ export type BranchOrderByWithRelationInput = {
   sales?: Prisma.SaleOrderByRelationAggregateInput
   dailyReports?: Prisma.DailyReportOrderByRelationAggregateInput
   productBranchStocks?: Prisma.ProductBranchStockOrderByRelationAggregateInput
+  documents?: Prisma.DocumentOrderByRelationAggregateInput
 }
 
 export type BranchWhereUniqueInput = Prisma.AtLeast<{
@@ -242,6 +244,7 @@ export type BranchWhereUniqueInput = Prisma.AtLeast<{
   sales?: Prisma.SaleListRelationFilter
   dailyReports?: Prisma.DailyReportListRelationFilter
   productBranchStocks?: Prisma.ProductBranchStockListRelationFilter
+  documents?: Prisma.DocumentListRelationFilter
 }, "id">
 
 export type BranchOrderByWithAggregationInput = {
@@ -284,6 +287,7 @@ export type BranchCreateInput = {
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutBranchInput
   productBranchStocks?: Prisma.ProductBranchStockCreateNestedManyWithoutBranchInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateInput = {
@@ -300,6 +304,7 @@ export type BranchUncheckedCreateInput = {
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutBranchInput
   productBranchStocks?: Prisma.ProductBranchStockUncheckedCreateNestedManyWithoutBranchInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUpdateInput = {
@@ -316,6 +321,7 @@ export type BranchUpdateInput = {
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
   dailyReports?: Prisma.DailyReportUpdateManyWithoutBranchNestedInput
   productBranchStocks?: Prisma.ProductBranchStockUpdateManyWithoutBranchNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateInput = {
@@ -332,6 +338,7 @@ export type BranchUncheckedUpdateInput = {
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutBranchNestedInput
   productBranchStocks?: Prisma.ProductBranchStockUncheckedUpdateManyWithoutBranchNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateManyInput = {
@@ -543,6 +550,20 @@ export type BranchUpdateOneRequiredWithoutDailyReportsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutDailyReportsInput, Prisma.BranchUpdateWithoutDailyReportsInput>, Prisma.BranchUncheckedUpdateWithoutDailyReportsInput>
 }
 
+export type BranchCreateNestedOneWithoutDocumentsInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutDocumentsInput, Prisma.BranchUncheckedCreateWithoutDocumentsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutDocumentsInput
+  connect?: Prisma.BranchWhereUniqueInput
+}
+
+export type BranchUpdateOneRequiredWithoutDocumentsNestedInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutDocumentsInput, Prisma.BranchUncheckedCreateWithoutDocumentsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutDocumentsInput
+  upsert?: Prisma.BranchUpsertWithoutDocumentsInput
+  connect?: Prisma.BranchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutDocumentsInput, Prisma.BranchUpdateWithoutDocumentsInput>, Prisma.BranchUncheckedUpdateWithoutDocumentsInput>
+}
+
 export type BranchCreateWithoutUsersInput = {
   id?: string
   name: string
@@ -556,6 +577,7 @@ export type BranchCreateWithoutUsersInput = {
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutBranchInput
   productBranchStocks?: Prisma.ProductBranchStockCreateNestedManyWithoutBranchInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutUsersInput = {
@@ -571,6 +593,7 @@ export type BranchUncheckedCreateWithoutUsersInput = {
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutBranchInput
   productBranchStocks?: Prisma.ProductBranchStockUncheckedCreateNestedManyWithoutBranchInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutUsersInput = {
@@ -602,6 +625,7 @@ export type BranchUpdateWithoutUsersInput = {
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
   dailyReports?: Prisma.DailyReportUpdateManyWithoutBranchNestedInput
   productBranchStocks?: Prisma.ProductBranchStockUpdateManyWithoutBranchNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutUsersInput = {
@@ -617,6 +641,7 @@ export type BranchUncheckedUpdateWithoutUsersInput = {
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutBranchNestedInput
   productBranchStocks?: Prisma.ProductBranchStockUncheckedUpdateManyWithoutBranchNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutOrganisationInput = {
@@ -632,6 +657,7 @@ export type BranchCreateWithoutOrganisationInput = {
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutBranchInput
   productBranchStocks?: Prisma.ProductBranchStockCreateNestedManyWithoutBranchInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutOrganisationInput = {
@@ -647,6 +673,7 @@ export type BranchUncheckedCreateWithoutOrganisationInput = {
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutBranchInput
   productBranchStocks?: Prisma.ProductBranchStockUncheckedCreateNestedManyWithoutBranchInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutOrganisationInput = {
@@ -701,6 +728,7 @@ export type BranchCreateWithoutProductBranchStocksInput = {
   transfersIn?: Prisma.StockEntryCreateNestedManyWithoutToBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutBranchInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutProductBranchStocksInput = {
@@ -716,6 +744,7 @@ export type BranchUncheckedCreateWithoutProductBranchStocksInput = {
   transfersIn?: Prisma.StockEntryUncheckedCreateNestedManyWithoutToBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutBranchInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutProductBranchStocksInput = {
@@ -747,6 +776,7 @@ export type BranchUpdateWithoutProductBranchStocksInput = {
   transfersIn?: Prisma.StockEntryUpdateManyWithoutToBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
   dailyReports?: Prisma.DailyReportUpdateManyWithoutBranchNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutProductBranchStocksInput = {
@@ -762,6 +792,7 @@ export type BranchUncheckedUpdateWithoutProductBranchStocksInput = {
   transfersIn?: Prisma.StockEntryUncheckedUpdateManyWithoutToBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutBranchNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutStockEntriesInput = {
@@ -777,6 +808,7 @@ export type BranchCreateWithoutStockEntriesInput = {
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutBranchInput
   productBranchStocks?: Prisma.ProductBranchStockCreateNestedManyWithoutBranchInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutStockEntriesInput = {
@@ -792,6 +824,7 @@ export type BranchUncheckedCreateWithoutStockEntriesInput = {
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutBranchInput
   productBranchStocks?: Prisma.ProductBranchStockUncheckedCreateNestedManyWithoutBranchInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutStockEntriesInput = {
@@ -812,6 +845,7 @@ export type BranchCreateWithoutTransfersInInput = {
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutBranchInput
   productBranchStocks?: Prisma.ProductBranchStockCreateNestedManyWithoutBranchInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutTransfersInInput = {
@@ -827,6 +861,7 @@ export type BranchUncheckedCreateWithoutTransfersInInput = {
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutBranchInput
   productBranchStocks?: Prisma.ProductBranchStockUncheckedCreateNestedManyWithoutBranchInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutTransfersInInput = {
@@ -858,6 +893,7 @@ export type BranchUpdateWithoutStockEntriesInput = {
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
   dailyReports?: Prisma.DailyReportUpdateManyWithoutBranchNestedInput
   productBranchStocks?: Prisma.ProductBranchStockUpdateManyWithoutBranchNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutStockEntriesInput = {
@@ -873,6 +909,7 @@ export type BranchUncheckedUpdateWithoutStockEntriesInput = {
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutBranchNestedInput
   productBranchStocks?: Prisma.ProductBranchStockUncheckedUpdateManyWithoutBranchNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUpsertWithoutTransfersInInput = {
@@ -899,6 +936,7 @@ export type BranchUpdateWithoutTransfersInInput = {
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
   dailyReports?: Prisma.DailyReportUpdateManyWithoutBranchNestedInput
   productBranchStocks?: Prisma.ProductBranchStockUpdateManyWithoutBranchNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutTransfersInInput = {
@@ -914,6 +952,7 @@ export type BranchUncheckedUpdateWithoutTransfersInInput = {
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutBranchNestedInput
   productBranchStocks?: Prisma.ProductBranchStockUncheckedUpdateManyWithoutBranchNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutSalesInput = {
@@ -929,6 +968,7 @@ export type BranchCreateWithoutSalesInput = {
   transfersIn?: Prisma.StockEntryCreateNestedManyWithoutToBranchInput
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutBranchInput
   productBranchStocks?: Prisma.ProductBranchStockCreateNestedManyWithoutBranchInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutSalesInput = {
@@ -944,6 +984,7 @@ export type BranchUncheckedCreateWithoutSalesInput = {
   transfersIn?: Prisma.StockEntryUncheckedCreateNestedManyWithoutToBranchInput
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutBranchInput
   productBranchStocks?: Prisma.ProductBranchStockUncheckedCreateNestedManyWithoutBranchInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutSalesInput = {
@@ -975,6 +1016,7 @@ export type BranchUpdateWithoutSalesInput = {
   transfersIn?: Prisma.StockEntryUpdateManyWithoutToBranchNestedInput
   dailyReports?: Prisma.DailyReportUpdateManyWithoutBranchNestedInput
   productBranchStocks?: Prisma.ProductBranchStockUpdateManyWithoutBranchNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutSalesInput = {
@@ -990,6 +1032,7 @@ export type BranchUncheckedUpdateWithoutSalesInput = {
   transfersIn?: Prisma.StockEntryUncheckedUpdateManyWithoutToBranchNestedInput
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutBranchNestedInput
   productBranchStocks?: Prisma.ProductBranchStockUncheckedUpdateManyWithoutBranchNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutDailyReportsInput = {
@@ -1005,6 +1048,7 @@ export type BranchCreateWithoutDailyReportsInput = {
   transfersIn?: Prisma.StockEntryCreateNestedManyWithoutToBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
   productBranchStocks?: Prisma.ProductBranchStockCreateNestedManyWithoutBranchInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutDailyReportsInput = {
@@ -1020,6 +1064,7 @@ export type BranchUncheckedCreateWithoutDailyReportsInput = {
   transfersIn?: Prisma.StockEntryUncheckedCreateNestedManyWithoutToBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
   productBranchStocks?: Prisma.ProductBranchStockUncheckedCreateNestedManyWithoutBranchInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutDailyReportsInput = {
@@ -1051,6 +1096,7 @@ export type BranchUpdateWithoutDailyReportsInput = {
   transfersIn?: Prisma.StockEntryUpdateManyWithoutToBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
   productBranchStocks?: Prisma.ProductBranchStockUpdateManyWithoutBranchNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutDailyReportsInput = {
@@ -1065,6 +1111,87 @@ export type BranchUncheckedUpdateWithoutDailyReportsInput = {
   stockEntries?: Prisma.StockEntryUncheckedUpdateManyWithoutBranchNestedInput
   transfersIn?: Prisma.StockEntryUncheckedUpdateManyWithoutToBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  productBranchStocks?: Prisma.ProductBranchStockUncheckedUpdateManyWithoutBranchNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchCreateWithoutDocumentsInput = {
+  id?: string
+  name: string
+  location?: string | null
+  phone?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  organisation: Prisma.OrganisationCreateNestedOneWithoutBranchesInput
+  users?: Prisma.UserCreateNestedManyWithoutBranchInput
+  stockEntries?: Prisma.StockEntryCreateNestedManyWithoutBranchInput
+  transfersIn?: Prisma.StockEntryCreateNestedManyWithoutToBranchInput
+  sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
+  dailyReports?: Prisma.DailyReportCreateNestedManyWithoutBranchInput
+  productBranchStocks?: Prisma.ProductBranchStockCreateNestedManyWithoutBranchInput
+}
+
+export type BranchUncheckedCreateWithoutDocumentsInput = {
+  id?: string
+  name: string
+  location?: string | null
+  phone?: string | null
+  organisationId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
+  stockEntries?: Prisma.StockEntryUncheckedCreateNestedManyWithoutBranchInput
+  transfersIn?: Prisma.StockEntryUncheckedCreateNestedManyWithoutToBranchInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
+  dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutBranchInput
+  productBranchStocks?: Prisma.ProductBranchStockUncheckedCreateNestedManyWithoutBranchInput
+}
+
+export type BranchCreateOrConnectWithoutDocumentsInput = {
+  where: Prisma.BranchWhereUniqueInput
+  create: Prisma.XOR<Prisma.BranchCreateWithoutDocumentsInput, Prisma.BranchUncheckedCreateWithoutDocumentsInput>
+}
+
+export type BranchUpsertWithoutDocumentsInput = {
+  update: Prisma.XOR<Prisma.BranchUpdateWithoutDocumentsInput, Prisma.BranchUncheckedUpdateWithoutDocumentsInput>
+  create: Prisma.XOR<Prisma.BranchCreateWithoutDocumentsInput, Prisma.BranchUncheckedCreateWithoutDocumentsInput>
+  where?: Prisma.BranchWhereInput
+}
+
+export type BranchUpdateToOneWithWhereWithoutDocumentsInput = {
+  where?: Prisma.BranchWhereInput
+  data: Prisma.XOR<Prisma.BranchUpdateWithoutDocumentsInput, Prisma.BranchUncheckedUpdateWithoutDocumentsInput>
+}
+
+export type BranchUpdateWithoutDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  organisation?: Prisma.OrganisationUpdateOneRequiredWithoutBranchesNestedInput
+  users?: Prisma.UserUpdateManyWithoutBranchNestedInput
+  stockEntries?: Prisma.StockEntryUpdateManyWithoutBranchNestedInput
+  transfersIn?: Prisma.StockEntryUpdateManyWithoutToBranchNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
+  dailyReports?: Prisma.DailyReportUpdateManyWithoutBranchNestedInput
+  productBranchStocks?: Prisma.ProductBranchStockUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchUncheckedUpdateWithoutDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  organisationId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
+  stockEntries?: Prisma.StockEntryUncheckedUpdateManyWithoutBranchNestedInput
+  transfersIn?: Prisma.StockEntryUncheckedUpdateManyWithoutToBranchNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutBranchNestedInput
   productBranchStocks?: Prisma.ProductBranchStockUncheckedUpdateManyWithoutBranchNestedInput
 }
 
@@ -1090,6 +1217,7 @@ export type BranchUpdateWithoutOrganisationInput = {
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
   dailyReports?: Prisma.DailyReportUpdateManyWithoutBranchNestedInput
   productBranchStocks?: Prisma.ProductBranchStockUpdateManyWithoutBranchNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutOrganisationInput = {
@@ -1105,6 +1233,7 @@ export type BranchUncheckedUpdateWithoutOrganisationInput = {
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutBranchNestedInput
   productBranchStocks?: Prisma.ProductBranchStockUncheckedUpdateManyWithoutBranchNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateManyWithoutOrganisationInput = {
@@ -1128,6 +1257,7 @@ export type BranchCountOutputType = {
   sales: number
   dailyReports: number
   productBranchStocks: number
+  documents: number
 }
 
 export type BranchCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1137,6 +1267,7 @@ export type BranchCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions
   sales?: boolean | BranchCountOutputTypeCountSalesArgs
   dailyReports?: boolean | BranchCountOutputTypeCountDailyReportsArgs
   productBranchStocks?: boolean | BranchCountOutputTypeCountProductBranchStocksArgs
+  documents?: boolean | BranchCountOutputTypeCountDocumentsArgs
 }
 
 /**
@@ -1191,6 +1322,13 @@ export type BranchCountOutputTypeCountProductBranchStocksArgs<ExtArgs extends ru
   where?: Prisma.ProductBranchStockWhereInput
 }
 
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DocumentWhereInput
+}
+
 
 export type BranchSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1207,6 +1345,7 @@ export type BranchSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   sales?: boolean | Prisma.Branch$salesArgs<ExtArgs>
   dailyReports?: boolean | Prisma.Branch$dailyReportsArgs<ExtArgs>
   productBranchStocks?: boolean | Prisma.Branch$productBranchStocksArgs<ExtArgs>
+  documents?: boolean | Prisma.Branch$documentsArgs<ExtArgs>
   _count?: boolean | Prisma.BranchCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["branch"]>
 
@@ -1251,6 +1390,7 @@ export type BranchInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   sales?: boolean | Prisma.Branch$salesArgs<ExtArgs>
   dailyReports?: boolean | Prisma.Branch$dailyReportsArgs<ExtArgs>
   productBranchStocks?: boolean | Prisma.Branch$productBranchStocksArgs<ExtArgs>
+  documents?: boolean | Prisma.Branch$documentsArgs<ExtArgs>
   _count?: boolean | Prisma.BranchCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BranchIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1270,6 +1410,7 @@ export type $BranchPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     sales: Prisma.$SalePayload<ExtArgs>[]
     dailyReports: Prisma.$DailyReportPayload<ExtArgs>[]
     productBranchStocks: Prisma.$ProductBranchStockPayload<ExtArgs>[]
+    documents: Prisma.$DocumentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1680,6 +1821,7 @@ export interface Prisma__BranchClient<T, Null = never, ExtArgs extends runtime.T
   sales<T extends Prisma.Branch$salesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$salesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SalePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   dailyReports<T extends Prisma.Branch$dailyReportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$dailyReportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DailyReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   productBranchStocks<T extends Prisma.Branch$productBranchStocksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$productBranchStocksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductBranchStockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  documents<T extends Prisma.Branch$documentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$documentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2258,6 +2400,30 @@ export type Branch$productBranchStocksArgs<ExtArgs extends runtime.Types.Extensi
   take?: number
   skip?: number
   distinct?: Prisma.ProductBranchStockScalarFieldEnum | Prisma.ProductBranchStockScalarFieldEnum[]
+}
+
+/**
+ * Branch.documents
+ */
+export type Branch$documentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Document
+   */
+  select?: Prisma.DocumentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Document
+   */
+  omit?: Prisma.DocumentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DocumentInclude<ExtArgs> | null
+  where?: Prisma.DocumentWhereInput
+  orderBy?: Prisma.DocumentOrderByWithRelationInput | Prisma.DocumentOrderByWithRelationInput[]
+  cursor?: Prisma.DocumentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DocumentScalarFieldEnum | Prisma.DocumentScalarFieldEnum[]
 }
 
 /**

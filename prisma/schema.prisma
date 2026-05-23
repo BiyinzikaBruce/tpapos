@@ -52,6 +52,11 @@ enum NotificationType {
   NEW_MESSAGE
 }
 
+enum DocumentType {
+  CHEQUE
+  RECEIPT
+}
+
 enum AuditAction {
   CREATE
   UPDATE
@@ -90,6 +95,7 @@ model User {
   receivedMessages Message[]      @relation("ReceivedMessages")
   notifications    Notification[]
   auditLogs        AuditLog[]
+  documents        Document[]
 
   @@map("user")
 }
@@ -161,6 +167,7 @@ model Organisation {
   dailyReports  DailyReport[]
   notifications Notification[]
   auditLogs     AuditLog[]
+  documents     Document[]
 
   @@map("organisation")
 }
@@ -182,6 +189,7 @@ model Branch {
   sales                Sale[]
   dailyReports         DailyReport[]
   productBranchStocks  ProductBranchStock[]
+  documents            Document[]
 
   @@map("branch")
 }
@@ -378,6 +386,26 @@ model Notification {
   user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("notification")
+}
+
+model Document {
+  id             String       @id @default(cuid())
+  organisationId String
+  branchId       String
+  uploadedById   String
+  type           DocumentType
+  fileUrl        String
+  fileName       String
+  fileSize       Int
+  notes          String?
+  saleId         String?
+  createdAt      DateTime     @default(now())
+
+  organisation Organisation @relation(fields: [organisationId], references: [id], onDelete: Cascade)
+  branch       Branch       @relation(fields: [branchId], references: [id])
+  uploadedBy   User         @relation(fields: [uploadedById], references: [id])
+
+  @@map("document")
 }
 
 model AuditLog {

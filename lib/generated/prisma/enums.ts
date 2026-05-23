@@ -73,6 +73,14 @@ export const NotificationType = {
 export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
 
 
+export const DocumentType = {
+  CHEQUE: 'CHEQUE',
+  RECEIPT: 'RECEIPT'
+} as const
+
+export type DocumentType = (typeof DocumentType)[keyof typeof DocumentType]
+
+
 export const AuditAction = {
   CREATE: 'CREATE',
   UPDATE: 'UPDATE',

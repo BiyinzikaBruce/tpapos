@@ -122,6 +122,11 @@ export type Message = Prisma.MessageModel
  */
 export type Notification = Prisma.NotificationModel
 /**
+ * Model Document
+ * 
+ */
+export type Document = Prisma.DocumentModel
+/**
  * Model AuditLog
  * 
  */

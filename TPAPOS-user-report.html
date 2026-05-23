@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>TPAPOS — Pre-Wipe User Report</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #fff; color: #111; padding: 40px; font-size: 13px; }
+  .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #7C3AED; }
+  .logo-area h1 { font-size: 22px; font-weight: 800; color: #7C3AED; letter-spacing: -0.5px; }
+  .logo-area p { color: #555; margin-top: 4px; font-size: 12px; }
+  .meta { text-align: right; font-size: 11px; color: #888; line-height: 1.6; }
+  .warning { background: #FEF3C7; border: 1px solid #F59E0B; border-radius: 8px; padding: 12px 16px; margin-bottom: 28px; color: #92400E; font-size: 12px; font-weight: 500; }
+  h2 { font-size: 14px; font-weight: 700; color: #111; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #e5e7eb; }
+  section { margin-bottom: 32px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th { background: #F5F3FF; color: #7C3AED; font-weight: 700; text-align: left; padding: 8px 10px; border-bottom: 2px solid #DDD6FE; font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; }
+  td { padding: 8px 10px; border-bottom: 1px solid #F3F4F6; vertical-align: middle; }
+  tr:hover td { background: #FAFAFA; }
+  .badge { padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 600; }
+  .pw { font-family: 'Courier New', monospace; font-weight: 700; color: #7C3AED; background: #F5F3FF; padding: 3px 8px; border-radius: 4px; display: inline-block; }
+  .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e5e7eb; color: #aaa; font-size: 11px; text-align: center; }
+  @media print { body { padding: 20px; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo-area">
+    <h1>TPAPOS</h1>
+    <p>Pre-Wipe User & Data Report</p>
+  </div>
+  <div class="meta">
+    Generated: Saturday, 23 May 2026 at 08:27<br>
+    Database: Neon PostgreSQL (eu-west-2)<br>
+    Total users: 14 &nbsp;|&nbsp; Total orgs: 2
+  </div>
+</div>
+
+<div class="warning">
+  ⚠️ This report was generated immediately before a full database wipe. Keep it safe — these are the only records of user credentials.
+</div>
+
+<section>
+  <h2>All Users &amp; Credentials</h2>
+  <table>
+    <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Organisation</th><th>Branch</th><th>Password</th></tr></thead>
+    <tbody>
+  <tr>
+    <td>Bruce Biyinzika</td>
+    <td>programmingwithbruce@gmail.com</td>
+    <td><span class="badge" style="background:#7C3AED20;color:#7C3AED;border:1px solid #7C3AED40">Super Admin</span></td>
+    <td>—</td>
+    <td>—</td>
+    <td class="pw">Password123!</td>
+  </tr>
+  <tr>
+    <td>Robert Ssemakula</td>
+    <td>admin@kgs.co.ug</td>
+    <td><span class="badge" style="background:#2563EB20;color:#2563EB;border:1px solid #2563EB40">Admin</span></td>
+    <td>Kampala General Store</td>
+    <td>Kampala Main</td>
+    <td class="pw">Password123!</td>
+  </tr>
+  <tr>
+    <td>The Saint</td>
+    <td>admin@nakawa.co.ug</td>
+    <td><span class="badge" style="background:#2563EB20;color:#2563EB;border:1px solid #2563EB40">Admin</span></td>
+    <td>POSIBILITIES TECH</td>
+    <td>Nakawa HQ</td>
+    <td class="pw">Password123!</td>
+  </tr>
+  <tr>
+    <td>Andrew Byarugaba</td>
+    <td>manager@nakawa.co.ug</td>
+    <td><span class="badge" style="background:#05966920;color:#059669;border:1px solid #05966940">Manager</span></td>
+    <td>POSIBILITIES TECH</td>
+    <td>Nakawa HQ</td>
+    <td class="pw">Password123!</td>
+  </tr>
+  <tr>
+    <td>Grace Namukasa</td>
+    <td>manager@kgs.co.ug</td>
+    <td><span class="badge" style="background:#05966920;color:#059669;border:1px solid #05966940">Manager</span></td>
+    <td>Kampala General Store</td>
+    <td>Kampala Main</td>
+    <td class="pw">Password123!</td>
+  </tr>
+  <tr>
+    <td>David Ochieng</td>
+    <td>store@kgs.co.ug</td>
+    <td><span class="badge" style="background:#D9770620;color:#D97706;border:1px solid #D9770640">Store Manager</span></td>
+    <td>Kampala General Store</td>
+    <td>Kampala Main</td>
+    <td class="pw">Password123!</td>
+  </tr>
+  <tr>
+    <td>Immaculate Tendo</td>
+    <td>store@nakawa.co.ug</td>
+    <td><span class="badge" style="background:#D9770620;color:#D97706;border:1px solid #D9770640">Store Manager</span></td>
+    <td>POSIBILITIES TECH</td>
+    <td>Nakawa HQ</td>
+    <td class="pw">Password123!</td>
+  </tr>
+  <tr>
+    <td>Brenda Namutebi</td>
+    <td>cashier2@nakawa.co.ug</td>
+    <td><span class="badge" style="background:#6B728020;color:#6B7280;border:1px solid #6B728040">Cashier</span></td>
+    <td>POSIBILITIES TECH</td>
+    <td>Ntinda Branch</td>
+    <td class="pw">Password123!</td>
+  </tr>
+  <tr>
+    <td>Emmanuel Kato</td>
+    <td>cashier1@nakawa.co.ug</td>
+    <td><span class="badge" style="background:#6B728020;color:#6B7280;border:1px solid #6B728040">Cashier</span></td>
+    <td>POSIBILITIES TECH</td>
+    <td>Nakawa HQ</td>
+    <td class="pw">Password123!</td>
+  </tr>
+  <tr>
+    <td>Fatuma Nakato</td>
+    <td>cashier1@kgs.co.ug</td>
+    <td><span class="badge" style="background:#6B728020;color:#6B7280;border:1px solid #6B728040">Cashier</span></td>
+    <td>Kampala General Store</td>
+    <td>Kampala Main</td>
+    <td class="pw">Password123!</td>
+  </tr>
+  <tr>
+    <td>Herbert Tumusiime</td>
+    <td>cashier3@nakawa.co.ug</td>
+    <td><span class="badge" style="background:#6B728020;color:#6B7280;border:1px solid #6B728040">Cashier</span></td>
+    <td>POSIBILITIES TECH</td>
+    <td>ACACIA  AVENUE</td>
+    <td class="pw">Password123!</td>
+  </tr>
+  <tr>
+    <td>James Mugisha</td>
+    <td>cashier4@kgs.co.ug</td>
+    <td><span class="badge" style="background:#6B728020;color:#6B7280;border:1px solid #6B728040">Cashier</span></td>
+    <td>Kampala General Store</td>
+    <td>Mbarara Store</td>
+    <td class="pw">Password123!</td>
+  </tr>
+  <tr>
+    <td>Moses Okello</td>
+    <td>cashier2@kgs.co.ug</td>
+    <td><span class="badge" style="background:#6B728020;color:#6B7280;border:1px solid #6B728040">Cashier</span></td>
+    <td>Kampala General Store</td>
+    <td>Entebbe Branch</td>
+    <td class="pw">Password123!</td>
+  </tr>
+  <tr>
+    <td>Sarah Auma</td>
+    <td>cashier3@kgs.co.ug</td>
+    <td><span class="badge" style="background:#6B728020;color:#6B7280;border:1px solid #6B728040">Cashier</span></td>
+    <td>Kampala General Store</td>
+    <td>Jinja Outlet</td>
+    <td class="pw">Password123!</td>
+  </tr></tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Organisations Summary</h2>
+  <table>
+    <thead><tr><th>Organisation</th><th>Plan</th><th>Branches</th><th>Users</th><th>Products</th><th>Sales</th></tr></thead>
+    <tbody>
+  <tr>
+    <td>Kampala General Store</td>
+    <td><span class="badge" style="background:#D9770620;color:#D97706">PRO</span></td>
+    <td>4</td>
+    <td>7</td>
+    <td>24</td>
+    <td>242</td>
+  </tr>
+  <tr>
+    <td>POSIBILITIES TECH</td>
+    <td><span class="badge" style="background:#6B728020;color:#6B7280">FREE</span></td>
+    <td>3</td>
+    <td>6</td>
+    <td>17</td>
+    <td>196</td>
+  </tr></tbody>
+  </table>
+</section>
+
+<div class="footer">
+  TPAPOS — Tech Power Africa POS &nbsp;|&nbsp; Confidential — Do not share
+</div>
+</body>
+</html>

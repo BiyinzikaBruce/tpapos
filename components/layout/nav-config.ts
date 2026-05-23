@@ -20,6 +20,7 @@ export const adminNav: NavItem[] = [
   { label: "Reports", href: "/dashboard/reports", icon: "FileText" },
   { label: "Messages", href: "/dashboard/messages", icon: "MessageCircle" },
   { label: "Notifications", href: "/dashboard/notifications", icon: "Bell" },
+  { label: "Documents", href: "/dashboard/documents", icon: "FolderOpen" },
   { label: "Settings", href: "/dashboard/settings", icon: "Settings" },
 ];
 
@@ -43,5 +44,6 @@ export const cashierNav: NavItem[] = [
   { label: "POS", href: "/cashier", icon: "Monitor" },
   { label: "History", href: "/cashier/history", icon: "ShoppingCart" },
   { label: "Daily Report", href: "/cashier/report", icon: "FileText" },
+  { label: "Documents", href: "/cashier/documents", icon: "FolderOpen" },
   { label: "Messages", href: "/cashier/messages", icon: "MessageCircle" },
 ];

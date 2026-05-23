@@ -67,6 +67,7 @@ export const ModelName = {
   DailyReport: 'DailyReport',
   Message: 'Message',
   Notification: 'Notification',
+  Document: 'Document',
   AuditLog: 'AuditLog'
 } as const
 
@@ -326,6 +327,23 @@ export const NotificationScalarFieldEnum = {
 } as const
 
 export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
+
+
+export const DocumentScalarFieldEnum = {
+  id: 'id',
+  organisationId: 'organisationId',
+  branchId: 'branchId',
+  uploadedById: 'uploadedById',
+  type: 'type',
+  fileUrl: 'fileUrl',
+  fileName: 'fileName',
+  fileSize: 'fileSize',
+  notes: 'notes',
+  saleId: 'saleId',
+  createdAt: 'createdAt'
+} as const
+
+export type DocumentScalarFieldEnum = (typeof DocumentScalarFieldEnum)[keyof typeof DocumentScalarFieldEnum]
 
 
 export const AuditLogScalarFieldEnum = {

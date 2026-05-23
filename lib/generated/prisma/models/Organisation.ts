@@ -242,6 +242,7 @@ export type OrganisationWhereInput = {
   dailyReports?: Prisma.DailyReportListRelationFilter
   notifications?: Prisma.NotificationListRelationFilter
   auditLogs?: Prisma.AuditLogListRelationFilter
+  documents?: Prisma.DocumentListRelationFilter
 }
 
 export type OrganisationOrderByWithRelationInput = {
@@ -262,6 +263,7 @@ export type OrganisationOrderByWithRelationInput = {
   dailyReports?: Prisma.DailyReportOrderByRelationAggregateInput
   notifications?: Prisma.NotificationOrderByRelationAggregateInput
   auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
+  documents?: Prisma.DocumentOrderByRelationAggregateInput
 }
 
 export type OrganisationWhereUniqueInput = Prisma.AtLeast<{
@@ -285,6 +287,7 @@ export type OrganisationWhereUniqueInput = Prisma.AtLeast<{
   dailyReports?: Prisma.DailyReportListRelationFilter
   notifications?: Prisma.NotificationListRelationFilter
   auditLogs?: Prisma.AuditLogListRelationFilter
+  documents?: Prisma.DocumentListRelationFilter
 }, "id">
 
 export type OrganisationOrderByWithAggregationInput = {
@@ -333,6 +336,7 @@ export type OrganisationCreateInput = {
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationUncheckedCreateInput = {
@@ -353,6 +357,7 @@ export type OrganisationUncheckedCreateInput = {
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationUpdateInput = {
@@ -373,6 +378,7 @@ export type OrganisationUpdateInput = {
   dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationUncheckedUpdateInput = {
@@ -393,6 +399,7 @@ export type OrganisationUncheckedUpdateInput = {
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationCreateManyInput = {
@@ -613,6 +620,20 @@ export type OrganisationUpdateOneRequiredWithoutNotificationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.OrganisationUpdateToOneWithWhereWithoutNotificationsInput, Prisma.OrganisationUpdateWithoutNotificationsInput>, Prisma.OrganisationUncheckedUpdateWithoutNotificationsInput>
 }
 
+export type OrganisationCreateNestedOneWithoutDocumentsInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutDocumentsInput, Prisma.OrganisationUncheckedCreateWithoutDocumentsInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutDocumentsInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+}
+
+export type OrganisationUpdateOneRequiredWithoutDocumentsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganisationCreateWithoutDocumentsInput, Prisma.OrganisationUncheckedCreateWithoutDocumentsInput>
+  connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutDocumentsInput
+  upsert?: Prisma.OrganisationUpsertWithoutDocumentsInput
+  connect?: Prisma.OrganisationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganisationUpdateToOneWithWhereWithoutDocumentsInput, Prisma.OrganisationUpdateWithoutDocumentsInput>, Prisma.OrganisationUncheckedUpdateWithoutDocumentsInput>
+}
+
 export type OrganisationCreateNestedOneWithoutAuditLogsInput = {
   create?: Prisma.XOR<Prisma.OrganisationCreateWithoutAuditLogsInput, Prisma.OrganisationUncheckedCreateWithoutAuditLogsInput>
   connectOrCreate?: Prisma.OrganisationCreateOrConnectWithoutAuditLogsInput
@@ -644,6 +665,7 @@ export type OrganisationCreateWithoutUsersInput = {
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationUncheckedCreateWithoutUsersInput = {
@@ -663,6 +685,7 @@ export type OrganisationUncheckedCreateWithoutUsersInput = {
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationCreateOrConnectWithoutUsersInput = {
@@ -698,6 +721,7 @@ export type OrganisationUpdateWithoutUsersInput = {
   dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationUncheckedUpdateWithoutUsersInput = {
@@ -717,6 +741,7 @@ export type OrganisationUncheckedUpdateWithoutUsersInput = {
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationCreateWithoutBranchesInput = {
@@ -736,6 +761,7 @@ export type OrganisationCreateWithoutBranchesInput = {
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationUncheckedCreateWithoutBranchesInput = {
@@ -755,6 +781,7 @@ export type OrganisationUncheckedCreateWithoutBranchesInput = {
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationCreateOrConnectWithoutBranchesInput = {
@@ -790,6 +817,7 @@ export type OrganisationUpdateWithoutBranchesInput = {
   dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationUncheckedUpdateWithoutBranchesInput = {
@@ -809,6 +837,7 @@ export type OrganisationUncheckedUpdateWithoutBranchesInput = {
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationCreateWithoutCategoriesInput = {
@@ -828,6 +857,7 @@ export type OrganisationCreateWithoutCategoriesInput = {
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationUncheckedCreateWithoutCategoriesInput = {
@@ -847,6 +877,7 @@ export type OrganisationUncheckedCreateWithoutCategoriesInput = {
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationCreateOrConnectWithoutCategoriesInput = {
@@ -882,6 +913,7 @@ export type OrganisationUpdateWithoutCategoriesInput = {
   dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationUncheckedUpdateWithoutCategoriesInput = {
@@ -901,6 +933,7 @@ export type OrganisationUncheckedUpdateWithoutCategoriesInput = {
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationCreateWithoutProductsInput = {
@@ -920,6 +953,7 @@ export type OrganisationCreateWithoutProductsInput = {
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationUncheckedCreateWithoutProductsInput = {
@@ -939,6 +973,7 @@ export type OrganisationUncheckedCreateWithoutProductsInput = {
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationCreateOrConnectWithoutProductsInput = {
@@ -974,6 +1009,7 @@ export type OrganisationUpdateWithoutProductsInput = {
   dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationUncheckedUpdateWithoutProductsInput = {
@@ -993,6 +1029,7 @@ export type OrganisationUncheckedUpdateWithoutProductsInput = {
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationCreateWithoutSuppliersInput = {
@@ -1012,6 +1049,7 @@ export type OrganisationCreateWithoutSuppliersInput = {
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationUncheckedCreateWithoutSuppliersInput = {
@@ -1031,6 +1069,7 @@ export type OrganisationUncheckedCreateWithoutSuppliersInput = {
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationCreateOrConnectWithoutSuppliersInput = {
@@ -1066,6 +1105,7 @@ export type OrganisationUpdateWithoutSuppliersInput = {
   dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationUncheckedUpdateWithoutSuppliersInput = {
@@ -1085,6 +1125,7 @@ export type OrganisationUncheckedUpdateWithoutSuppliersInput = {
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationCreateWithoutStockEntriesInput = {
@@ -1104,6 +1145,7 @@ export type OrganisationCreateWithoutStockEntriesInput = {
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationUncheckedCreateWithoutStockEntriesInput = {
@@ -1123,6 +1165,7 @@ export type OrganisationUncheckedCreateWithoutStockEntriesInput = {
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationCreateOrConnectWithoutStockEntriesInput = {
@@ -1158,6 +1201,7 @@ export type OrganisationUpdateWithoutStockEntriesInput = {
   dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationUncheckedUpdateWithoutStockEntriesInput = {
@@ -1177,6 +1221,7 @@ export type OrganisationUncheckedUpdateWithoutStockEntriesInput = {
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationCreateWithoutSalesInput = {
@@ -1196,6 +1241,7 @@ export type OrganisationCreateWithoutSalesInput = {
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationUncheckedCreateWithoutSalesInput = {
@@ -1215,6 +1261,7 @@ export type OrganisationUncheckedCreateWithoutSalesInput = {
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationCreateOrConnectWithoutSalesInput = {
@@ -1250,6 +1297,7 @@ export type OrganisationUpdateWithoutSalesInput = {
   dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationUncheckedUpdateWithoutSalesInput = {
@@ -1269,6 +1317,7 @@ export type OrganisationUncheckedUpdateWithoutSalesInput = {
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationCreateWithoutDailyReportsInput = {
@@ -1288,6 +1337,7 @@ export type OrganisationCreateWithoutDailyReportsInput = {
   sales?: Prisma.SaleCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationUncheckedCreateWithoutDailyReportsInput = {
@@ -1307,6 +1357,7 @@ export type OrganisationUncheckedCreateWithoutDailyReportsInput = {
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationCreateOrConnectWithoutDailyReportsInput = {
@@ -1342,6 +1393,7 @@ export type OrganisationUpdateWithoutDailyReportsInput = {
   sales?: Prisma.SaleUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationUncheckedUpdateWithoutDailyReportsInput = {
@@ -1361,6 +1413,7 @@ export type OrganisationUncheckedUpdateWithoutDailyReportsInput = {
   sales?: Prisma.SaleUncheckedUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationCreateWithoutNotificationsInput = {
@@ -1380,6 +1433,7 @@ export type OrganisationCreateWithoutNotificationsInput = {
   sales?: Prisma.SaleCreateNestedManyWithoutOrganisationInput
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationUncheckedCreateWithoutNotificationsInput = {
@@ -1399,6 +1453,7 @@ export type OrganisationUncheckedCreateWithoutNotificationsInput = {
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutOrganisationInput
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationCreateOrConnectWithoutNotificationsInput = {
@@ -1434,6 +1489,7 @@ export type OrganisationUpdateWithoutNotificationsInput = {
   sales?: Prisma.SaleUpdateManyWithoutOrganisationNestedInput
   dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationUncheckedUpdateWithoutNotificationsInput = {
@@ -1452,6 +1508,103 @@ export type OrganisationUncheckedUpdateWithoutNotificationsInput = {
   stockEntries?: Prisma.StockEntryUncheckedUpdateManyWithoutOrganisationNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutOrganisationNestedInput
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationCreateWithoutDocumentsInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationUncheckedCreateWithoutDocumentsInput = {
+  id?: string
+  name: string
+  logoUrl?: string | null
+  plan?: $Enums.Plan
+  lowStockThreshold?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branches?: Prisma.BranchUncheckedCreateNestedManyWithoutOrganisationInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutOrganisationInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutOrganisationInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutOrganisationInput
+  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutOrganisationInput
+  stockEntries?: Prisma.StockEntryUncheckedCreateNestedManyWithoutOrganisationInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutOrganisationInput
+  dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganisationInput
+}
+
+export type OrganisationCreateOrConnectWithoutDocumentsInput = {
+  where: Prisma.OrganisationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutDocumentsInput, Prisma.OrganisationUncheckedCreateWithoutDocumentsInput>
+}
+
+export type OrganisationUpsertWithoutDocumentsInput = {
+  update: Prisma.XOR<Prisma.OrganisationUpdateWithoutDocumentsInput, Prisma.OrganisationUncheckedUpdateWithoutDocumentsInput>
+  create: Prisma.XOR<Prisma.OrganisationCreateWithoutDocumentsInput, Prisma.OrganisationUncheckedCreateWithoutDocumentsInput>
+  where?: Prisma.OrganisationWhereInput
+}
+
+export type OrganisationUpdateToOneWithWhereWithoutDocumentsInput = {
+  where?: Prisma.OrganisationWhereInput
+  data: Prisma.XOR<Prisma.OrganisationUpdateWithoutDocumentsInput, Prisma.OrganisationUncheckedUpdateWithoutDocumentsInput>
+}
+
+export type OrganisationUpdateWithoutDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutOrganisationNestedInput
+}
+
+export type OrganisationUncheckedUpdateWithoutDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plan?: Prisma.EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+  lowStockThreshold?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branches?: Prisma.BranchUncheckedUpdateManyWithoutOrganisationNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutOrganisationNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutOrganisationNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutOrganisationNestedInput
+  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutOrganisationNestedInput
+  stockEntries?: Prisma.StockEntryUncheckedUpdateManyWithoutOrganisationNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutOrganisationNestedInput
+  dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganisationNestedInput
 }
 
@@ -1472,6 +1625,7 @@ export type OrganisationCreateWithoutAuditLogsInput = {
   sales?: Prisma.SaleCreateNestedManyWithoutOrganisationInput
   dailyReports?: Prisma.DailyReportCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationUncheckedCreateWithoutAuditLogsInput = {
@@ -1491,6 +1645,7 @@ export type OrganisationUncheckedCreateWithoutAuditLogsInput = {
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutOrganisationInput
   dailyReports?: Prisma.DailyReportUncheckedCreateNestedManyWithoutOrganisationInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutOrganisationInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutOrganisationInput
 }
 
 export type OrganisationCreateOrConnectWithoutAuditLogsInput = {
@@ -1526,6 +1681,7 @@ export type OrganisationUpdateWithoutAuditLogsInput = {
   sales?: Prisma.SaleUpdateManyWithoutOrganisationNestedInput
   dailyReports?: Prisma.DailyReportUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutOrganisationNestedInput
 }
 
 export type OrganisationUncheckedUpdateWithoutAuditLogsInput = {
@@ -1545,6 +1701,7 @@ export type OrganisationUncheckedUpdateWithoutAuditLogsInput = {
   sales?: Prisma.SaleUncheckedUpdateManyWithoutOrganisationNestedInput
   dailyReports?: Prisma.DailyReportUncheckedUpdateManyWithoutOrganisationNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutOrganisationNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutOrganisationNestedInput
 }
 
 
@@ -1563,6 +1720,7 @@ export type OrganisationCountOutputType = {
   dailyReports: number
   notifications: number
   auditLogs: number
+  documents: number
 }
 
 export type OrganisationCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1576,6 +1734,7 @@ export type OrganisationCountOutputTypeSelect<ExtArgs extends runtime.Types.Exte
   dailyReports?: boolean | OrganisationCountOutputTypeCountDailyReportsArgs
   notifications?: boolean | OrganisationCountOutputTypeCountNotificationsArgs
   auditLogs?: boolean | OrganisationCountOutputTypeCountAuditLogsArgs
+  documents?: boolean | OrganisationCountOutputTypeCountDocumentsArgs
 }
 
 /**
@@ -1658,6 +1817,13 @@ export type OrganisationCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtim
   where?: Prisma.AuditLogWhereInput
 }
 
+/**
+ * OrganisationCountOutputType without action
+ */
+export type OrganisationCountOutputTypeCountDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DocumentWhereInput
+}
+
 
 export type OrganisationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1677,6 +1843,7 @@ export type OrganisationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   dailyReports?: boolean | Prisma.Organisation$dailyReportsArgs<ExtArgs>
   notifications?: boolean | Prisma.Organisation$notificationsArgs<ExtArgs>
   auditLogs?: boolean | Prisma.Organisation$auditLogsArgs<ExtArgs>
+  documents?: boolean | Prisma.Organisation$documentsArgs<ExtArgs>
   _count?: boolean | Prisma.OrganisationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["organisation"]>
 
@@ -1722,6 +1889,7 @@ export type OrganisationInclude<ExtArgs extends runtime.Types.Extensions.Interna
   dailyReports?: boolean | Prisma.Organisation$dailyReportsArgs<ExtArgs>
   notifications?: boolean | Prisma.Organisation$notificationsArgs<ExtArgs>
   auditLogs?: boolean | Prisma.Organisation$auditLogsArgs<ExtArgs>
+  documents?: boolean | Prisma.Organisation$documentsArgs<ExtArgs>
   _count?: boolean | Prisma.OrganisationCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type OrganisationIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1740,6 +1908,7 @@ export type $OrganisationPayload<ExtArgs extends runtime.Types.Extensions.Intern
     dailyReports: Prisma.$DailyReportPayload<ExtArgs>[]
     notifications: Prisma.$NotificationPayload<ExtArgs>[]
     auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
+    documents: Prisma.$DocumentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2153,6 +2322,7 @@ export interface Prisma__OrganisationClient<T, Null = never, ExtArgs extends run
   dailyReports<T extends Prisma.Organisation$dailyReportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organisation$dailyReportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DailyReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   notifications<T extends Prisma.Organisation$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organisation$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   auditLogs<T extends Prisma.Organisation$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organisation$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  documents<T extends Prisma.Organisation$documentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organisation$documentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2819,6 +2989,30 @@ export type Organisation$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.AuditLogScalarFieldEnum | Prisma.AuditLogScalarFieldEnum[]
+}
+
+/**
+ * Organisation.documents
+ */
+export type Organisation$documentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Document
+   */
+  select?: Prisma.DocumentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Document
+   */
+  omit?: Prisma.DocumentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DocumentInclude<ExtArgs> | null
+  where?: Prisma.DocumentWhereInput
+  orderBy?: Prisma.DocumentOrderByWithRelationInput | Prisma.DocumentOrderByWithRelationInput[]
+  cursor?: Prisma.DocumentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DocumentScalarFieldEnum | Prisma.DocumentScalarFieldEnum[]
 }
 
 /**
