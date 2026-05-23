@@ -5,6 +5,17 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { LogoutButton } from "@/components/auth/logout-button";
 import type { NavItem } from "./nav-config";
+import {
+  LayoutDashboard, Building2, Users, Package, Warehouse, ShoppingCart,
+  BarChart3, FileText, MessageCircle, Bell, Settings, Truck,
+  ArrowLeftRight, Download, Monitor, Shield, LucideIcon,
+} from "lucide-react";
+
+const ICON_MAP: Record<string, LucideIcon> = {
+  LayoutDashboard, Building2, Users, Package, Warehouse, ShoppingCart,
+  BarChart3, FileText, MessageCircle, Bell, Settings, Truck,
+  ArrowLeftRight, Download, Monitor, Shield,
+};
 
 interface SidebarProps {
   navItems: NavItem[];
@@ -59,7 +70,7 @@ export function Sidebar({
       {/* Nav items */}
       <nav className="flex-1 overflow-y-auto py-3 px-2 space-y-0.5">
         {navItems.map((item) => {
-          const Icon = item.icon;
+          const Icon = ICON_MAP[item.icon] ?? Package;
           const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
 
           return (
