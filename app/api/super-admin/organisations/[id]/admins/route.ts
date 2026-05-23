@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { hashPassword } from "better-auth/crypto";
 
 async function requireSuperAdmin(req: NextRequest) {
   const session = await auth.api.getSession({ headers: req.headers });
@@ -31,25 +32,44 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
   if (!org) return NextResponse.json({ error: "Organisation not found" }, { status: 404 });
 
   const { name, email, password } = await req.json();
-  if (!name || !email || !password) return NextResponse.json({ error: "Name, email and password are required" }, { status: 400 });
+  if (!name || !email || !password) {
+    return NextResponse.json({ error: "Name, email and password are required" }, { status: 400 });
+  }
+  if (password.length < 8) {
+    return NextResponse.json({ error: "Password must be at least 8 characters" }, { status: 400 });
+  }
 
   const existing = await db.user.findUnique({ where: { email } });
   if (existing) return NextResponse.json({ error: "Email already in use" }, { status: 409 });
 
-  const signUpResult = await auth.api.signUpEmail({
-    body: { name, email, password },
-  });
-  if (!signUpResult || "error" in signUpResult) {
-    return NextResponse.json({ error: "Failed to create user" }, { status: 500 });
-  }
+  // Create user + account directly — avoids signUpEmail's session-creation path
+  // which fails in server-side admin flows without a real request context.
+  const hashed = await hashPassword(password);
 
-  const user = await db.user.update({
-    where: { email },
-    data: { role: "ADMIN", organisationId: id, branchId: null },
-    select: { id: true, name: true, email: true, createdAt: true },
+  const user = await db.user.create({
+    data: {
+      name,
+      email,
+      emailVerified: true,
+      role: "ADMIN",
+      organisationId: id,
+      branchId: null,
+    },
   });
 
-  return NextResponse.json(user, { status: 201 });
+  await db.account.create({
+    data: {
+      userId: user.id,
+      accountId: user.id,
+      providerId: "credential",
+      password: hashed,
+    },
+  });
+
+  return NextResponse.json(
+    { id: user.id, name: user.name, email: user.email, createdAt: user.createdAt },
+    { status: 201 }
+  );
 }
 
 // PATCH — update an admin's name/email
@@ -76,7 +96,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
   return NextResponse.json(updated);
 }
 
-// DELETE — remove admin role (demote to CASHIER / unlink from org)
+// DELETE — remove admin role and unlink from org
 export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   if (!await requireSuperAdmin(req)) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   const { id: orgId } = await params;
