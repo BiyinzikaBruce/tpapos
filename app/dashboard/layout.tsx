@@ -23,7 +23,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
       <Sidebar
         navItems={adminNav}
         orgName={org?.name ?? "TPAPOS"}
-        orgLogoUrl={org?.logoUrl ?? undefined}
+        orgLogoUrl={org?.logoUrl ?? "/logo.png"}
         userName={session.user.name}
         userRole={(session.user as { role?: string }).role ?? "ADMIN"}
       />

@@ -21,7 +21,7 @@ export default async function StoreLayout({ children }: { children: React.ReactN
       <Sidebar
         navItems={storeManagerNav}
         orgName={org?.name ?? "TPAPOS"}
-        orgLogoUrl={org?.logoUrl ?? undefined}
+        orgLogoUrl={org?.logoUrl ?? "/logo.png"}
         userName={session.user.name}
         userRole="STORE_MANAGER"
       />

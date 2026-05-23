@@ -21,7 +21,7 @@ export default async function ManagerLayout({ children }: { children: React.Reac
       <Sidebar
         navItems={managerNav}
         orgName={org?.name ?? "TPAPOS"}
-        orgLogoUrl={org?.logoUrl ?? undefined}
+        orgLogoUrl={org?.logoUrl ?? "/logo.png"}
         userName={session.user.name}
         userRole="MANAGER"
       />

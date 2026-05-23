@@ -21,7 +21,7 @@ export default async function CashierLayout({ children }: { children: React.Reac
       <Sidebar
         navItems={cashierNav}
         orgName={org?.name ?? "TPAPOS"}
-        orgLogoUrl={org?.logoUrl ?? undefined}
+        orgLogoUrl={org?.logoUrl ?? "/logo.png"}
         userName={session.user.name}
         userRole="CASHIER"
       />
