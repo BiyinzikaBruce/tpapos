@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, ChevronRight, Receipt } from "lucide-react";
+import { ChevronLeft, ChevronRight, Trash2 } from "lucide-react";
 import { format } from "date-fns";
+import { toast } from "sonner";
 
 type Branch = { id: string; name: string };
 
@@ -28,6 +29,9 @@ export function SalesClient({ branches, defaultBranchId = "" }: { branches: Bran
   const [to, setTo] = useState("");
   const [page, setPage] = useState(1);
   const [selected, setSelected] = useState<Sale | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const queryClient = useQueryClient();
 
   const params = new URLSearchParams({ page: String(page) });
   if (branchId) params.set("branchId", branchId);
@@ -39,7 +43,20 @@ export function SalesClient({ branches, defaultBranchId = "" }: { branches: Bran
     queryFn: () => fetch(`/api/admin/sales?${params}`).then((r) => r.json()),
   });
 
-  function applyFilter() { setPage(1); }
+  async function handleDelete(id: string) {
+    setIsDeleting(true);
+    try {
+      const res = await fetch(`/api/admin/sales/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed");
+      queryClient.invalidateQueries({ queryKey: ["admin-sales"] });
+      toast.success("Sale deleted");
+    } catch {
+      toast.error("Failed to delete sale");
+    } finally {
+      setIsDeleting(false);
+      setDeletingId(null);
+    }
+  }
 
   return (
     <>
@@ -97,7 +114,20 @@ export function SalesClient({ branches, defaultBranchId = "" }: { branches: Bran
                     <Badge variant="outline" className="border-[#2A2A45] text-[#A09EC0] text-xs">{PM_LABELS[s.paymentMethod] ?? s.paymentMethod}</Badge>
                   </td>
                   <td className="px-4 py-3 font-semibold text-[#F1F0FF]">UGX {s.total.toLocaleString()}</td>
-                  <td className="px-4 py-3 text-[#5C5A7A]"><Receipt className="w-4 h-4" /></td>
+                  <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
+                    {deletingId === s.id ? (
+                      <div className="flex items-center gap-1">
+                        <Button size="sm" variant="ghost" className="h-7 px-2 text-xs text-[#5C5A7A] hover:text-[#F1F0FF]" onClick={() => setDeletingId(null)}>Cancel</Button>
+                        <Button size="sm" disabled={isDeleting} className="h-7 px-2 text-xs bg-red-600 hover:bg-red-700 text-white" onClick={() => handleDelete(s.id)}>
+                          {isDeleting ? "..." : "Delete"}
+                        </Button>
+                      </div>
+                    ) : (
+                      <Button size="sm" variant="ghost" className="h-7 w-7 p-0 text-[#5C5A7A] hover:text-red-400" onClick={() => setDeletingId(s.id)}>
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </Button>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>
