@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { TrendingUp, TrendingDown, ShoppingCart, Building2, Package, Users, CreditCard } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import Link from "next/link";
 
 const METHOD_LABELS: Record<string, string> = { CASH: "Cash", MTN_MOMO: "MTN MoMo", AIRTEL_MONEY: "Airtel Money" };
 const METHOD_COLORS: Record<string, string> = {
@@ -37,11 +38,11 @@ export function AdminDashboard({ stats, chartData, branchData, paymentData, rece
   const totalPayment = Object.values(paymentData).reduce((a, b) => a + b, 0);
 
   const statCards = [
-    { label: "Revenue (This Month)", value: formatUGX(stats.revenue), trend: stats.revenueTrend, icon: CreditCard, accent: true },
-    { label: "Sales (This Month)", value: stats.salesCount.toLocaleString(), trend: stats.countTrend, icon: ShoppingCart, accent: false },
-    { label: "Branches", value: stats.branches.toString(), trend: null, icon: Building2, accent: false },
-    { label: "Active Products", value: stats.products.toString(), trend: null, icon: Package, accent: false },
-    { label: "Staff Members", value: stats.users.toString(), trend: null, icon: Users, accent: false },
+    { label: "Revenue (This Month)", value: formatUGX(stats.revenue), trend: stats.revenueTrend, icon: CreditCard, accent: true, href: "/dashboard/analytics" },
+    { label: "Sales (This Month)", value: stats.salesCount.toLocaleString(), trend: stats.countTrend, icon: ShoppingCart, accent: false, href: "/dashboard/sales" },
+    { label: "Branches", value: stats.branches.toString(), trend: null, icon: Building2, accent: false, href: "/dashboard/branches" },
+    { label: "Active Products", value: stats.products.toString(), trend: null, icon: Package, accent: false, href: "/dashboard/products" },
+    { label: "Staff Members", value: stats.users.toString(), trend: null, icon: Users, accent: false, href: "/dashboard/users" },
   ];
 
   return (
@@ -58,7 +59,7 @@ export function AdminDashboard({ stats, chartData, branchData, paymentData, rece
         {statCards.map((card) => {
           const Icon = card.icon;
           return (
-            <div key={card.label} className="rounded-xl border p-4" style={{ borderColor: "var(--color-border-subtle)", background: "var(--color-bg-elevated)" }}>
+            <div key={card.label} className="rounded-xl border p-4 flex flex-col" style={{ borderColor: "var(--color-border-subtle)", background: "var(--color-bg-elevated)" }}>
               <div className="flex items-center justify-between mb-3">
                 <p className="text-xs text-[#5C5A7A]">{card.label}</p>
                 <Icon className="w-4 h-4 text-[#3A3A60]" />
@@ -69,6 +70,11 @@ export function AdminDashboard({ stats, chartData, branchData, paymentData, rece
                   <TrendBadge value={card.trend} />
                 </div>
               )}
+              <div className="mt-3 pt-3 border-t border-[#1E1E35]">
+                <Link href={card.href} className="text-xs text-[#7C3AED] hover:text-[#A78BFA] font-medium flex items-center gap-1 transition-colors">
+                  View <span aria-hidden>→</span>
+                </Link>
+              </div>
             </div>
           );
         })}
