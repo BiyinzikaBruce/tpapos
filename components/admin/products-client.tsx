@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
-import { Search, Plus, Package, Pencil, ToggleLeft, ToggleRight } from "lucide-react";
+import { Search, Plus, Package, Pencil, ToggleLeft, ToggleRight, Trash2 } from "lucide-react";
 
 type Category = { id: string; name: string };
 type Product = {
@@ -28,6 +28,8 @@ export function ProductsClient({ initialProducts, categories }: { initialProduct
   const [editing, setEditing] = useState<Product | null>(null);
   const [form, setForm] = useState<FormState>(EMPTY);
   const [isPending, setIsPending] = useState(false);
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const filtered = products.filter((p) => {
     const matchSearch = p.name.toLowerCase().includes(search.toLowerCase()) || (p.sku ?? "").toLowerCase().includes(search.toLowerCase());
@@ -35,10 +37,11 @@ export function ProductsClient({ initialProducts, categories }: { initialProduct
     return matchSearch && matchCat;
   });
 
-  function openAdd() { setEditing(null); setForm(EMPTY); setOpen(true); }
+  function openAdd() { setEditing(null); setDeleteConfirm(false); setForm(EMPTY); setOpen(true); }
   function openEdit(p: Product) {
     setEditing(p);
-    setForm({ name: p.name, sku: p.sku ?? "", price: String(p.price), costPrice: p.costPrice ? String(p.costPrice) : "", unit: p.unit, categoryId: p.categoryId, initialStock: "0" });
+    setDeleteConfirm(false);
+    setForm({ name: p.name, sku: p.sku ?? "", price: String(p.price), costPrice: p.costPrice ? String(p.costPrice) : "", unit: p.unit, categoryId: p.categoryId, initialStock: String(p.stock ?? 0) });
     setOpen(true);
   }
   function setField(k: keyof FormState, v: string) { setForm((f) => ({ ...f, [k]: v })); }
@@ -49,7 +52,10 @@ export function ProductsClient({ initialProducts, categories }: { initialProduct
     setIsPending(true);
     try {
       const body: Record<string, unknown> = { name: form.name, sku: form.sku || null, price: parseFloat(form.price), costPrice: form.costPrice ? parseFloat(form.costPrice) : null, unit: form.unit, categoryId: form.categoryId };
-      if (!editing) body.initialStock = parseInt(form.initialStock) || 0;
+      const stockVal = parseInt(form.initialStock);
+      const validStock = !isNaN(stockVal) && stockVal >= 0 ? stockVal : 0;
+      if (!editing) body.initialStock = validStock;
+      else body.stockQty = validStock;
       const res = await fetch(editing ? `/api/products/${editing.id}` : "/api/products", {
         method: editing ? "PATCH" : "POST",
         headers: { "Content-Type": "application/json" },
@@ -70,6 +76,23 @@ export function ProductsClient({ initialProducts, categories }: { initialProduct
       toast.error("Failed to save product");
     } finally {
       setIsPending(false);
+    }
+  }
+
+  async function handleDelete() {
+    if (!editing) return;
+    setIsDeleting(true);
+    try {
+      const res = await fetch(`/api/products/${editing.id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed");
+      setProducts((prev) => prev.filter((p) => p.id !== editing.id));
+      setOpen(false);
+      toast.success("Product deleted");
+    } catch {
+      toast.error("Failed to delete product");
+    } finally {
+      setIsDeleting(false);
+      setDeleteConfirm(false);
     }
   }
 
@@ -143,7 +166,7 @@ export function ProductsClient({ initialProducts, categories }: { initialProduct
         </table>
       </div>
 
-      <Sheet open={open} onOpenChange={setOpen}>
+      <Sheet open={open} onOpenChange={(v) => { setOpen(v); if (!v) setDeleteConfirm(false); }}>
         <SheetContent className="bg-[#0D0D1A] border-[#2A2A45] text-[#F1F0FF] w-full sm:max-w-md overflow-y-auto">
           <SheetHeader className="mb-5">
             <SheetTitle className="text-[#F1F0FF]">{editing ? "Edit Product" : "Add Product"}</SheetTitle>
@@ -181,23 +204,40 @@ export function ProductsClient({ initialProducts, categories }: { initialProduct
                 {["pcs", "bottles", "boxes", "kg", "litres", "crates", "packets"].map((u) => <option key={u} value={u}>{u}</option>)}
               </select>
             </div>
-            {!editing && (
-              <div>
-                <Label className="text-xs text-[#A09EC0] mb-1.5 block">Initial Stock Quantity</Label>
-                <Input
-                  type="number"
-                  min="0"
-                  value={form.initialStock}
-                  onChange={(e) => setField("initialStock", e.target.value)}
-                  placeholder="0"
-                  className="bg-[#12122A] border-[#2A2A45] text-[#F1F0FF]"
-                />
-                <p className="text-xs text-[#5C5A7A] mt-1">Stock will be set for all branches in your organisation</p>
-              </div>
-            )}
+            <div>
+              <Label className="text-xs text-[#A09EC0] mb-1.5 block">{editing ? "Stock Quantity" : "Initial Stock Quantity"}</Label>
+              <Input
+                type="number"
+                min="0"
+                value={form.initialStock}
+                onChange={(e) => setField("initialStock", e.target.value)}
+                placeholder="0"
+                className="bg-[#12122A] border-[#2A2A45] text-[#F1F0FF]"
+              />
+              <p className="text-xs text-[#5C5A7A] mt-1">{editing ? "Updates stock across all branches" : "Stock will be set for all branches in your organisation"}</p>
+            </div>
             <Button type="submit" disabled={isPending} className="w-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white h-11 font-semibold mt-2">
               {isPending ? "Saving..." : editing ? "Save Changes" : "Add Product"}
             </Button>
+            {editing && (
+              <div className="pt-3 border-t border-[#2A2A45]">
+                {!deleteConfirm ? (
+                  <Button type="button" variant="ghost" onClick={() => setDeleteConfirm(true)} className="w-full h-10 text-red-400 hover:text-red-300 hover:bg-red-500/10 border border-red-500/20">
+                    <Trash2 className="w-4 h-4 mr-2" />Delete Product
+                  </Button>
+                ) : (
+                  <div className="space-y-2">
+                    <p className="text-xs text-center text-[#A09EC0]">Are you sure? This cannot be undone.</p>
+                    <div className="flex gap-2">
+                      <Button type="button" variant="ghost" onClick={() => setDeleteConfirm(false)} className="flex-1 h-9 border border-[#2A2A45] text-[#A09EC0] hover:text-[#F1F0FF]">Cancel</Button>
+                      <Button type="button" onClick={handleDelete} disabled={isDeleting} className="flex-1 h-9 bg-red-600 hover:bg-red-700 text-white">
+                        {isDeleting ? "Deleting..." : "Yes, Delete"}
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </form>
         </SheetContent>
       </Sheet>

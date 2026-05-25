@@ -10,15 +10,32 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
   if (!orgId) return NextResponse.json({ error: "No org" }, { status: 400 });
 
   const { id } = await params;
-  const { name, sku, price, costPrice, unit, categoryId, isActive } = await req.json();
+  const { name, sku, price, costPrice, unit, categoryId, isActive, stockQty } = await req.json();
 
   const product = await db.product.update({
     where: { id, organisationId: orgId },
     data: { name, sku, price, costPrice, unit, categoryId, isActive },
     include: { category: true },
   });
+
+  let resolvedStock: number | undefined;
+  if (typeof stockQty === "number" && stockQty >= 0) {
+    const qty = Math.floor(stockQty);
+    const branches = await db.branch.findMany({ where: { organisationId: orgId }, select: { id: true } });
+    await Promise.all(
+      branches.map((b) =>
+        db.productBranchStock.upsert({
+          where: { productId_branchId: { productId: id, branchId: b.id } },
+          update: { quantity: qty },
+          create: { productId: id, branchId: b.id, quantity: qty },
+        })
+      )
+    );
+    resolvedStock = qty;
+  }
+
   await invalidateTag(`products:${orgId}`);
-  return NextResponse.json(product);
+  return NextResponse.json({ ...product, price: Number(product.price), costPrice: product.costPrice ? Number(product.costPrice) : null, ...(resolvedStock !== undefined && { stock: resolvedStock }) });
 }
 
 export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
