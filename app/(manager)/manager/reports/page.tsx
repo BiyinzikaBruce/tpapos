@@ -13,7 +13,10 @@ export default async function ManagerReportsPage() {
 
   const where = { organisationId: orgId, ...(branchId ? { branchId } : {}) };
 
-  const [reports, branches] = await Promise.all([
+  const todayStart = new Date(); todayStart.setHours(0, 0, 0, 0);
+  const todayEnd = new Date(); todayEnd.setHours(23, 59, 59, 999);
+
+  const [reports, branches, todaySalesRaw] = await Promise.all([
     db.dailyReport.findMany({
       where,
       include: { cashier: { select: { id: true, name: true } }, branch: { select: { id: true, name: true } } },
@@ -23,7 +26,28 @@ export default async function ManagerReportsPage() {
     branchId
       ? db.branch.findMany({ where: { id: branchId }, select: { id: true, name: true } })
       : db.branch.findMany({ where: { organisationId: orgId }, select: { id: true, name: true }, orderBy: { name: "asc" } }),
+    db.sale.findMany({
+      where: { ...where, status: "COMPLETED", createdAt: { gte: todayStart, lte: todayEnd } },
+      select: { total: true, paymentMethod: true, branchId: true, branch: { select: { name: true } } },
+    }),
   ]);
+
+  const byBranch: Record<string, { branchName: string; total: number; count: number }> = {};
+  let todayCash = 0, todayMomo = 0, todayAirtel = 0;
+  for (const s of todaySalesRaw) {
+    if (!byBranch[s.branchId]) byBranch[s.branchId] = { branchName: s.branch.name, total: 0, count: 0 };
+    byBranch[s.branchId].total += Number(s.total);
+    byBranch[s.branchId].count += 1;
+    if (s.paymentMethod === "CASH") todayCash += Number(s.total);
+    else if (s.paymentMethod === "MTN_MOMO") todayMomo += Number(s.total);
+    else if (s.paymentMethod === "AIRTEL_MONEY") todayAirtel += Number(s.total);
+  }
+  const todaySummary = {
+    totalRevenue: todaySalesRaw.reduce((sum, s) => sum + Number(s.total), 0),
+    salesCount: todaySalesRaw.length,
+    cash: todayCash, momo: todayMomo, airtel: todayAirtel,
+    byBranch: Object.entries(byBranch).map(([id, v]) => ({ branchId: id, ...v })),
+  };
 
   return (
     <div>
@@ -34,6 +58,7 @@ export default async function ManagerReportsPage() {
       <ReportsClient
         initialReports={reports.map((r) => ({ ...r, totalSales: Number(r.totalSales), cashAmount: Number(r.cashAmount), momoAmount: Number(r.momoAmount) }))}
         branches={branches}
+        todaySummary={todaySummary}
       />
     </div>
   );
