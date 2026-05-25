@@ -45,13 +45,26 @@ export async function POST(req: NextRequest) {
   const orgId = (session.user as { organisationId?: string }).organisationId;
   if (!orgId) return NextResponse.json({ error: "No org" }, { status: 400 });
 
-  const { name, sku, price, costPrice, unit, categoryId } = await req.json();
+  const { name, sku, price, costPrice, unit, categoryId, initialStock } = await req.json();
   if (!name || !price || !categoryId) return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+
+  const stockQty = typeof initialStock === "number" && initialStock >= 0 ? Math.floor(initialStock) : 0;
 
   const product = await db.product.create({
     data: { name, sku, price, costPrice: costPrice || null, unit: unit || "pcs", categoryId, organisationId: orgId },
     include: { category: true },
   });
+
+  if (stockQty > 0) {
+    const branches = await db.branch.findMany({ where: { organisationId: orgId }, select: { id: true } });
+    if (branches.length > 0) {
+      await db.productBranchStock.createMany({
+        data: branches.map((b) => ({ productId: product.id, branchId: b.id, quantity: stockQty })),
+        skipDuplicates: true,
+      });
+    }
+  }
+
   await invalidateTag(`products:${orgId}`);
-  return NextResponse.json({ ...product, price: Number(product.price), costPrice: product.costPrice ? Number(product.costPrice) : null }, { status: 201 });
+  return NextResponse.json({ ...product, price: Number(product.price), costPrice: product.costPrice ? Number(product.costPrice) : null, stock: stockQty }, { status: 201 });
 }

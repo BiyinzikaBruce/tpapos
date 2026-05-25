@@ -12,13 +12,13 @@ import { Search, Plus, Package, Pencil, ToggleLeft, ToggleRight } from "lucide-r
 type Category = { id: string; name: string };
 type Product = {
   id: string; name: string; sku: string | null; price: number; costPrice: number | null;
-  unit: string; isActive: boolean; categoryId: string;
+  unit: string; isActive: boolean; categoryId: string; stock?: number;
   category: { id: string; name: string };
 };
 
-type FormState = { name: string; sku: string; price: string; costPrice: string; unit: string; categoryId: string };
+type FormState = { name: string; sku: string; price: string; costPrice: string; unit: string; categoryId: string; initialStock: string };
 
-const EMPTY: FormState = { name: "", sku: "", price: "", costPrice: "", unit: "pcs", categoryId: "" };
+const EMPTY: FormState = { name: "", sku: "", price: "", costPrice: "", unit: "pcs", categoryId: "", initialStock: "0" };
 
 export function ProductsClient({ initialProducts, categories }: { initialProducts: Product[]; categories: Category[] }) {
   const [products, setProducts] = useState(initialProducts);
@@ -38,7 +38,7 @@ export function ProductsClient({ initialProducts, categories }: { initialProduct
   function openAdd() { setEditing(null); setForm(EMPTY); setOpen(true); }
   function openEdit(p: Product) {
     setEditing(p);
-    setForm({ name: p.name, sku: p.sku ?? "", price: String(p.price), costPrice: p.costPrice ? String(p.costPrice) : "", unit: p.unit, categoryId: p.categoryId });
+    setForm({ name: p.name, sku: p.sku ?? "", price: String(p.price), costPrice: p.costPrice ? String(p.costPrice) : "", unit: p.unit, categoryId: p.categoryId, initialStock: "0" });
     setOpen(true);
   }
   function setField(k: keyof FormState, v: string) { setForm((f) => ({ ...f, [k]: v })); }
@@ -48,7 +48,8 @@ export function ProductsClient({ initialProducts, categories }: { initialProduct
     if (!form.name || !form.price || !form.categoryId) return toast.error("Name, price and category are required");
     setIsPending(true);
     try {
-      const body = { name: form.name, sku: form.sku || null, price: parseFloat(form.price), costPrice: form.costPrice ? parseFloat(form.costPrice) : null, unit: form.unit, categoryId: form.categoryId };
+      const body: Record<string, unknown> = { name: form.name, sku: form.sku || null, price: parseFloat(form.price), costPrice: form.costPrice ? parseFloat(form.costPrice) : null, unit: form.unit, categoryId: form.categoryId };
+      if (!editing) body.initialStock = parseInt(form.initialStock) || 0;
       const res = await fetch(editing ? `/api/products/${editing.id}` : "/api/products", {
         method: editing ? "PATCH" : "POST",
         headers: { "Content-Type": "application/json" },
@@ -56,7 +57,7 @@ export function ProductsClient({ initialProducts, categories }: { initialProduct
       });
       if (!res.ok) throw new Error("Failed");
       const saved = await res.json();
-      const withCategory = { ...saved, price: Number(saved.price), costPrice: saved.costPrice ? Number(saved.costPrice) : null, category: categories.find((c) => c.id === saved.categoryId) ?? { id: saved.categoryId, name: "" } };
+      const withCategory = { ...saved, price: Number(saved.price), costPrice: saved.costPrice ? Number(saved.costPrice) : null, stock: saved.stock ?? 0, category: categories.find((c) => c.id === saved.categoryId) ?? { id: saved.categoryId, name: "" } };
       if (editing) {
         setProducts((prev) => prev.map((p) => p.id === editing.id ? { ...p, ...withCategory } : p));
         toast.success("Product updated");
@@ -104,14 +105,14 @@ export function ProductsClient({ initialProducts, categories }: { initialProduct
         <table className="w-full text-sm">
           <thead>
             <tr className="bg-[#12122A] border-b border-[#2A2A45]">
-              {["Product", "SKU", "Category", "Price", "Cost", "Unit", "Status", ""].map((h) => (
+              {["Product", "SKU", "Category", "Price", "Cost", "Unit", "Stock", "Status", ""].map((h) => (
                 <th key={h} className="text-left px-4 py-3 text-[#5C5A7A] font-medium text-xs">{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {filtered.length === 0 ? (
-              <tr><td colSpan={8} className="text-center py-12 text-[#5C5A7A]"><Package className="w-8 h-8 mx-auto mb-2 opacity-30" /><p>No products found</p></td></tr>
+              <tr><td colSpan={9} className="text-center py-12 text-[#5C5A7A]"><Package className="w-8 h-8 mx-auto mb-2 opacity-30" /><p>No products found</p></td></tr>
             ) : filtered.map((p) => (
               <tr key={p.id} className="border-b border-[#1E1E35] hover:bg-[#12122A] transition-colors">
                 <td className="px-4 py-3 font-medium text-[#F1F0FF]">{p.name}</td>
@@ -120,6 +121,11 @@ export function ProductsClient({ initialProducts, categories }: { initialProduct
                 <td className="px-4 py-3 text-[#F1F0FF]">UGX {p.price.toLocaleString()}</td>
                 <td className="px-4 py-3 text-[#5C5A7A]">{p.costPrice ? `UGX ${p.costPrice.toLocaleString()}` : "—"}</td>
                 <td className="px-4 py-3 text-[#5C5A7A]">{p.unit}</td>
+                <td className="px-4 py-3">
+                  <span className={(p.stock ?? 0) === 0 ? "text-red-400" : (p.stock ?? 0) <= 5 ? "text-amber-400" : "text-emerald-400"}>
+                    {p.stock ?? 0}
+                  </span>
+                </td>
                 <td className="px-4 py-3">
                   <Badge className={p.isActive ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" : "bg-red-500/10 text-red-400 border-red-500/20"}>{p.isActive ? "Active" : "Inactive"}</Badge>
                 </td>
@@ -175,6 +181,20 @@ export function ProductsClient({ initialProducts, categories }: { initialProduct
                 {["pcs", "bottles", "boxes", "kg", "litres", "crates", "packets"].map((u) => <option key={u} value={u}>{u}</option>)}
               </select>
             </div>
+            {!editing && (
+              <div>
+                <Label className="text-xs text-[#A09EC0] mb-1.5 block">Initial Stock Quantity</Label>
+                <Input
+                  type="number"
+                  min="0"
+                  value={form.initialStock}
+                  onChange={(e) => setField("initialStock", e.target.value)}
+                  placeholder="0"
+                  className="bg-[#12122A] border-[#2A2A45] text-[#F1F0FF]"
+                />
+                <p className="text-xs text-[#5C5A7A] mt-1">Stock will be set for all branches in your organisation</p>
+              </div>
+            )}
             <Button type="submit" disabled={isPending} className="w-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white h-11 font-semibold mt-2">
               {isPending ? "Saving..." : editing ? "Save Changes" : "Add Product"}
             </Button>
