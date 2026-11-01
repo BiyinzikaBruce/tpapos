@@ -2,10 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { sendWelcomeEmail } from "@/lib/email";
+import { requireRole } from "@/lib/auth-helpers";
+
+// Roles an org ADMIN may give. SUPER_ADMIN is platform-only and never assignable here.
+const ASSIGNABLE_ROLES = ["ADMIN", "MANAGER", "STORE_MANAGER", "CASHIER"];
 
 export async function GET(req: NextRequest) {
   const session = await auth.api.getSession({ headers: req.headers });
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const forbidden = requireRole(session, "ADMIN");
+  if (forbidden) return forbidden;
   const orgId = (session.user as { organisationId?: string }).organisationId;
   if (!orgId) return NextResponse.json({ error: "No org" }, { status: 400 });
 
@@ -20,24 +26,31 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const session = await auth.api.getSession({ headers: req.headers });
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const forbidden = requireRole(session, "ADMIN");
+  if (forbidden) return forbidden;
   const orgId = (session.user as { organisationId?: string }).organisationId;
   if (!orgId) return NextResponse.json({ error: "No org" }, { status: 400 });
 
   const { name, email, password, role, branchId } = await req.json();
   if (!name || !email || !password || !role) return NextResponse.json({ error: "Missing fields" }, { status: 400 });
+  if (!ASSIGNABLE_ROLES.includes(role)) return NextResponse.json({ error: "Invalid role" }, { status: 400 });
+  if (branchId) {
+    const branch = await db.branch.findFirst({ where: { id: branchId, organisationId: orgId }, select: { id: true } });
+    if (!branch) return NextResponse.json({ error: "Branch not found" }, { status: 400 });
+  }
 
   const existing = await db.user.findUnique({ where: { email } });
   if (existing) return NextResponse.json({ error: "Email already in use" }, { status: 409 });
 
   // Use Better Auth to create the user (handles password hashing internally)
   const signUpResult = await auth.api.signUpEmail({
-    body: { name, email, password, role, organisationId: orgId, branchId: branchId || "" },
+    body: { name, email, password },
   });
   if (!signUpResult || "error" in signUpResult) {
     return NextResponse.json({ error: "Failed to create user" }, { status: 500 });
   }
 
-  // Update org/branch/role on the created user
+  // Set org/branch/role on the server (users can't set these through Better Auth)
   const [user, org] = await Promise.all([
     db.user.update({
       where: { email },

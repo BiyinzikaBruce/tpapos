@@ -34,16 +34,20 @@ export const auth = betterAuth({
   },
   session: {
     additionalFields: {
-      role: { type: "string", defaultValue: "CASHIER" },
-      organisationId: { type: "string", required: false, defaultValue: "" },
-      branchId: { type: "string", required: false, defaultValue: "" },
+      // input: false = users can never set these themselves (sign-up or update-user).
+      // Only server code (lib/db) may change role, organisation or branch.
+      role: { type: "string", defaultValue: "CASHIER", input: false },
+      organisationId: { type: "string", required: false, defaultValue: "", input: false },
+      branchId: { type: "string", required: false, defaultValue: "", input: false },
     },
   },
   user: {
     additionalFields: {
-      role: { type: "string", defaultValue: "CASHIER" },
-      organisationId: { type: "string", required: false, defaultValue: "" },
-      branchId: { type: "string", required: false, defaultValue: "" },
+      // input: false = users can never set these themselves (sign-up or update-user).
+      // Only server code (lib/db) may change role, organisation or branch.
+      role: { type: "string", defaultValue: "CASHIER", input: false },
+      organisationId: { type: "string", required: false, defaultValue: "", input: false },
+      branchId: { type: "string", required: false, defaultValue: "", input: false },
     },
   },
 });
