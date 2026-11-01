@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# 🏪 TPAPOS
 
-First, run the development server:
+**Run every branch. Own every sale.**
+
+A multi-branch point-of-sale and business management platform built for fast-growing local businesses: sales, inventory, suppliers, staff and reports in one place.
+
+![Next.js](https://img.shields.io/badge/Next.js_16-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma_7-2D3748?style=flat-square&logo=prisma&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![AWS S3](https://img.shields.io/badge/S3-569A31?style=flat-square&logo=amazons3&logoColor=white)
+
+</div>
+
+---
+
+## ✨ Why TPAPOS
+
+Growing businesses with more than one shop struggle to see stock, sales and staff across locations. TPAPOS gives owners a live view of every branch while giving each staff member exactly the tools their job needs.
+
+## 👥 Built for every role
+
+| Role | What they can do |
+|---|---|
+| **Super Admin** | Manage organisations on the platform |
+| **Owner / Admin** | Branches, products, categories, users, sales, analytics, reports, documents, settings |
+| **Manager** | Branch dashboard, sales, analytics, reports, team messages |
+| **Store Keeper** | Inventory, stock entry, transfers between branches, suppliers, exports |
+| **Cashier** | Point of sale, sales history, daily report, documents, messages |
+
+## 🚀 Features
+
+- 🧾 **Point of sale:** fast checkout for cashiers
+- 🏢 **Multi-branch & multi-organisation:** stock tracked per product per branch
+- 📦 **Inventory:** stock entries, transfers between branches, supplier records
+- 📊 **Analytics & reports:** sales charts, daily reports, exports
+- 💬 **Messages & notifications** between staff
+- 📁 **Documents:** upload and share files (S3)
+- 🛡️ **Audit log** of important actions
+- 🔐 **Auth:** sign-up, email verification, OTP, password reset, role-based access
+
+## 🛠️ Tech Stack
+
+| Layer | Tools |
+|---|---|
+| Framework | Next.js 16 (App Router), React 19, TypeScript |
+| Database | PostgreSQL + Prisma 7 |
+| Auth | Better Auth |
+| UI | Tailwind CSS 4, Radix, Lucide, Framer Motion, Recharts |
+| Data | TanStack Query, React Hook Form, Zod |
+| Services | AWS S3, Resend + React Email, Upstash Redis |
+
+## ⚡ Getting Started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+git clone https://github.com/BiyinzikaBruce/tpapos.git
+cd tpapos
+pnpm install
+
+cp .env.example .env      # fill in your values
+pnpm db:push
+pnpm db:seed              # optional: sample data
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+See [`.env.example`](./.env.example): database, Better Auth, Resend, Upstash Redis and S3 storage keys.
 
-## Learn More
+📘 Not sure where to get these? See my [Environment Variables Cheatsheet](https://biyinzikabruce.github.io/env-cheatsheet/).
 
-To learn more about Next.js, take a look at the following resources:
+### Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Command | What it does |
+|---|---|
+| `pnpm dev` | Start the dev server |
+| `pnpm build` | Production build |
+| `pnpm db:push` | Sync the Prisma schema |
+| `pnpm db:seed` | Seed sample data |
+| `pnpm db:studio` | Open Prisma Studio |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📁 Project Structure
 
-## Deploy on Vercel
+```
+app/
+  (super-admin)/   # platform organisations
+  dashboard/       # owner / admin
+  (manager)/       # branch managers
+  (store)/         # inventory, transfers, suppliers
+  (cashier)/       # point of sale
+  (auth)/          # sign-in, sign-up, OTP, password reset
+components/  hooks/  lib/  prisma/
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<div align="center">
+
+Built by **[Biyinzika Bruce](https://github.com/BiyinzikaBruce)** · Tech Power Africa
+
+</div>
