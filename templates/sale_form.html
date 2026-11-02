@@ -1,0 +1,194 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>Record Sale</h1>
+<section class="card">
+  <form method="post" id="sale-form">
+
+    <div class="form-row">
+      <label>Branch</label>
+      <input type="text" value="{{ branch.name }}" readonly>
+    </div>
+
+    <div class="form-row">
+      <label>Payment Type</label>
+      <select name="payment_type" required>
+        <option value="cash">Cash</option>
+        <option value="mobile money">Mobile Money</option>
+      </select>
+    </div>
+
+    {% if branch_stocks %}
+
+    <div class="form-row" style="display:flex; gap:0.75rem; align-items:flex-end; flex-wrap:wrap;">
+      <div style="flex:1; min-width:200px;">
+        <label>Select Product</label>
+        <select id="product-picker" style="margin-bottom:0;">
+          <option value="">-- Choose a product --</option>
+          {% for stock in branch_stocks %}
+          <option value="{{ stock.product.id }}"
+                  data-name="{{ stock.product.name }}"
+                  data-price="{{ stock.product.price }}"
+                  data-max="{{ stock.quantity }}"
+                  data-category="{{ stock.product.category or '' }}">
+            {{ stock.product.name }} &mdash; UGX {{ "{:,.0f}".format(stock.product.price) }}
+            &nbsp;({{ stock.quantity }} in stock)
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="button" onclick="addProduct()"
+              style="width:auto; padding:0.75rem 1.5rem; margin-bottom:0; white-space:nowrap;">
+        + Add Product
+      </button>
+    </div>
+
+    <div id="empty-notice" style="color:#888; font-style:italic; margin:0.75rem 0;">
+      No products added yet. Use the picker above to add items.
+    </div>
+
+    <table id="sale-items-table" style="display:none; margin-top:0.75rem;">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Unit Price (UGX)</th>
+          <th>Qty</th>
+          <th>Subtotal (UGX)</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="sale-items-body"></tbody>
+    </table>
+
+    <div id="total-box" style="display:none; text-align:right; margin-top:1rem; font-size:1.2rem;
+         font-weight:700; padding:0.75rem 1rem; background:#eef3ff; border-radius:6px;">
+      Total: UGX <span id="grand-total">0</span>
+    </div>
+
+    <div id="hidden-inputs"></div>
+
+    {% else %}
+    <div class="alert warning" style="margin-top:1rem;">
+      No products with available stock at <strong>{{ branch.name }}</strong>.
+      Ask your admin to add products and stock first.
+    </div>
+    {% endif %}
+
+    <button type="submit" id="submit-btn" disabled style="margin-top:1.25rem;">
+      Submit Sale
+    </button>
+
+  </form>
+</section>
+
+<script>
+var items = {};
+
+function fmt(n) {
+  return Math.round(n).toLocaleString();
+}
+
+function addProduct() {
+  var picker = document.getElementById('product-picker');
+  var opt = picker.options[picker.selectedIndex];
+  if (!opt || !opt.value) {
+    alert('Please choose a product first.');
+    return;
+  }
+  var id = opt.value;
+  if (items[id]) {
+    document.getElementById('qty_' + id).focus();
+    return;
+  }
+  items[id] = {
+    name: opt.dataset.name,
+    price: parseFloat(opt.dataset.price),
+    qty: 1,
+    max: parseInt(opt.dataset.max),
+    category: opt.dataset.category
+  };
+  picker.value = '';
+  renderTable();
+}
+
+function removeItem(id) {
+  delete items[id];
+  renderTable();
+}
+
+function updateQty(id, val) {
+  var qty = parseInt(val) || 1;
+  if (qty < 1) qty = 1;
+  if (qty > items[id].max) {
+    qty = items[id].max;
+    document.getElementById('qty_' + id).value = qty;
+  }
+  items[id].qty = qty;
+  document.getElementById('sub_' + id).textContent = fmt(items[id].price * qty);
+  updateGrandTotal();
+  rebuildHiddenInputs();
+}
+
+function renderTable() {
+  var tbody = document.getElementById('sale-items-body');
+  tbody.innerHTML = '';
+  var ids = Object.keys(items);
+
+  var hasItems = ids.length > 0;
+  document.getElementById('sale-items-table').style.display = hasItems ? 'table' : 'none';
+  document.getElementById('total-box').style.display = hasItems ? 'block' : 'none';
+  document.getElementById('empty-notice').style.display = hasItems ? 'none' : 'block';
+  document.getElementById('submit-btn').disabled = !hasItems;
+
+  if (!hasItems) {
+    document.getElementById('hidden-inputs').innerHTML = '';
+    return;
+  }
+
+  ids.forEach(function(id) {
+    var item = items[id];
+    var tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td>' + item.name +
+        (item.category ? '<br><small style="color:#888;">' + item.category + '</small>' : '') +
+      '</td>' +
+      '<td>' + fmt(item.price) + '</td>' +
+      '<td>' +
+        '<input type="number" id="qty_' + id + '" value="' + item.qty + '" ' +
+        'min="1" max="' + item.max + '" ' +
+        'style="width:75px;display:inline;padding:0.35rem 0.5rem;margin:0;" ' +
+        'oninput="updateQty(\'' + id + '\', this.value)">' +
+        '<span style="font-size:0.8rem;color:#888;margin-left:4px;">/ ' + item.max + '</span>' +
+      '</td>' +
+      '<td id="sub_' + id + '" style="font-weight:600;">' + fmt(item.price * item.qty) + '</td>' +
+      '<td>' +
+        '<button type="button" onclick="removeItem(\'' + id + '\')" ' +
+        'style="width:auto;padding:0.3rem 0.65rem;background:#c0392b;font-size:0.85rem;">Remove</button>' +
+      '</td>';
+    tbody.appendChild(tr);
+  });
+
+  updateGrandTotal();
+  rebuildHiddenInputs();
+}
+
+function updateGrandTotal() {
+  var grand = 0;
+  Object.keys(items).forEach(function(id) {
+    grand += items[id].price * items[id].qty;
+  });
+  document.getElementById('grand-total').textContent = fmt(grand);
+}
+
+function rebuildHiddenInputs() {
+  var container = document.getElementById('hidden-inputs');
+  container.innerHTML = '';
+  Object.keys(items).forEach(function(id) {
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'quantity_' + id;
+    input.value = items[id].qty;
+    container.appendChild(input);
+  });
+}
+</script>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>Products</h1>
+<section class="card">
+  <form method="post">
+    <label>Product name</label>
+    <input type="text" name="name" required>
+    <label>SKU</label>
+    <input type="text" name="sku" required>
+    <label>Category</label>
+    <input type="text" name="category" placeholder="Desktop, Laptop, Accessory">
+    <label>Cost price</label>
+    <input type="number" name="cost" step="0.01" value="0.00" required>
+    <label>Selling price</label>
+    <input type="number" name="price" step="0.01" value="0.00" required>
+    <button type="submit">Add Product</button>
+  </form>
+</section>
+<section>
+  <h2>Products</h2>
+  <table>
+    <thead><tr><th>SKU</th><th>Name</th><th>Category</th><th>Cost (UGX)</th><th>Price (UGX)</th><th>Profit</th><th>Margin</th><th></th></tr></thead>
+    <tbody>
+      {% for product in products %}
+        <tr>
+          <td>{{ product.sku }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.category or '-' }}</td>
+          <td>{{ "{:,.0f}".format(product.cost) }}</td>
+          <td>{{ "{:,.0f}".format(product.price) }}</td>
+          <td>{{ "{:,.0f}".format(product.profit) }}</td>
+          <td>{{ product.margin | round(1) }}%</td>
+          <td>
+            <form method="post" action="{{ url_for('delete_product', product_id=product.id) }}"
+                  onsubmit="return confirm('Delete {{ product.name }}? This cannot be undone.');">
+              <button type="submit" style="background:#c0392b; padding:0.3rem 0.75rem; width:auto;">
+                Delete
+              </button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}
